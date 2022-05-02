@@ -31,16 +31,15 @@
             </div>
         </a>
     </div>
-    <div class="strange"></div>
 </div>
 <header id="the_header">
+  <div class="title_head">
+      <a href="{% url 'main_page' %}">
+        COLRED FATE
+        </a>
+      <div>Создатель и редактор персонажей для Fate Core</div>
+  </div>
     <div class="coach">
-        <div class="logo">
-            <a href="{% url 'main_page' %}">
-                <img src="{% static 'main/images/logo.png' %}" alt="COLRED">
-            </a>
-            <div>Создатель и редактор персонажей для Pathfinder 2e</div>
-        </div>
         <div class="hide"></div>
         <div class="search shadow">
             <div>
@@ -61,7 +60,6 @@
         </div>
 
     </div>
-    <div class="strange"></div>
 </header>
 <script type="text/javascript" src="{% static 'main/js/search.js' %}"></script>
 {% endblock %}
