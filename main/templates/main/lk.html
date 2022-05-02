@@ -1,0 +1,88 @@
+{% extends 'main/footer_base.html' %}
+
+{% block head_input %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/css/lk.css' %}">
+{% endblock %}
+
+{% block title %}
+Username
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="lk_layout">
+    <div class="form_layout">
+        <a href="{% url 'main_page' %}">
+            <img src="{% static 'main/images/logo.png' %}" alt="lk_logo" class="lk_logo">
+        </a>
+        <br>
+        <br>
+        <form method="post" class="reg_form">
+            {% csrf_token %}
+            {{form}}
+            <br>
+            <button type="submit">
+                Сменить пароль
+            </button>
+        </form>
+        <br>
+        <a href="/logout">Выйти</a>
+    </div>
+    <a href="#popup">
+        <div class="listing">
+            <div class="char_logo">
+                <img src="{% get_static_prefix %}{{avatar}}" alt="big_ava">
+            </div>
+            <div>{{big_username}}</div>
+        </div>
+    </a>
+</div>
+<div id="popup" class="popup">
+    <!-- <a href="#the_header" class="popup_black_area"></a> -->
+    <div class="popup_body">
+        <div class="popup_content">
+            <a href="#the_header" class="popup_close">=X=</a>
+            <h3 class="popup_title">Выберите аватар</h3>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                <div class="profiles">
+                    <button type="submit" value="Бланк" name="_blank" class = "ava_change_button">
+                        <div class="listing">
+                            <div class="char_logo">
+                                <img src="{% static 'main/images/avatars/blank.png' %}" alt="+">
+                            </div>
+                            <div>Анонимус</div>
+                        </div>
+                    </button>
+                    <button type="submit" value="Эльф" name="_elf" class = "ava_change_button">
+                        <div class="listing">
+                            <div class="char_logo">
+                                <img src="{% static 'main/images/avatars/elf.png' %}" alt="+">
+                            </div>
+                            <div>Эльф</div>
+                        </div>
+                    </button>
+                    <button type="submit" value="Дорф" name="_dwarf" class = "ava_change_button">
+                        <div class="listing">
+                            <div class="char_logo">
+                                <img src="{% static 'main/images/avatars/dwarf.png' %}" alt="+">
+                            </div>
+                            <div>Дворф</div>
+                        </div>
+                    </button>
+                    <button type="submit" value="Кобальт" name="_cobalt" class = "ava_change_button">
+                        <div class="listing">
+                            <div class="char_logo">
+                                <img src="{% static 'main/images/avatars/cobalt.png' %}" alt="+">
+                            </div>
+                            <div>Кобальт</div>
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

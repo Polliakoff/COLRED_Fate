@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="47.015598mm"
+   height="43.50695mm"
+   viewBox="0 0 47.015598 43.50695"
+   version="1.1"
+   id="svg1470"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="list_book_circle.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1472"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.64052329"
+     inkscape:cx="166.2703"
+     inkscape:cy="185.78559"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1467" />
+  <g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-61.17231,-99.27712)">
+    <path
+       id="path2057-0"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.282033"
+       d="m 84.67984,99.27712 a 23.507829,21.753432 0 0 0 -23.50753,21.75373 23.507829,21.753432 0 0 0 23.50753,21.75322 23.507829,21.753432 0 0 0 23.50807,-21.75322 23.507829,21.753432 0 0 0 -23.50807,-21.75373 z m -0.0401,3.59403 a 19.556599,18.537708 0 0 1 19.55665,18.53774 19.556599,18.537708 0 0 1 -19.55665,18.53775 19.556599,18.537708 0 0 1 -19.55606,-18.53775 19.556599,18.537708 0 0 1 19.55606,-18.53774 z" />
+  </g>
+</svg>

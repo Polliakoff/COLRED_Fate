@@ -1,0 +1,86 @@
+.lk_layout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.form_layout{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reg_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lk_logo{
+    height: auto;
+    width: 20rem;
+}
+
+.popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.popup_black_area{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.popup:target{
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup_body{
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+}
+
+.popup_content{
+    background-color: white;
+    max-width: 600px;
+    padding: 30px;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.popup_close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    text-decoration: none;
+}
+
+.ava_change_button{
+    background: unset;
+    border: 0px;
+    cursor: pointer;
+    margin: 10px 50px;
+}
+
+.profiles .listing{
+    margin: 0 !important;
+}

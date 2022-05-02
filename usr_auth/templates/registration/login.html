@@ -1,0 +1,46 @@
+{% extends 'main/footer_base.html' %}
+{% block head_input %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous">
+    </script>
+<script type="text/javascript" src="{% static 'main/js/login.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="login_main">
+    <div class="logo">
+        <img src="{% static 'main/images/logo.png' %}" alt="COLRED">
+    </div>
+    <div>
+        <h2>Создатель и редактор персонажей для Pathfinder 2E</h2>
+    </div>
+    <div class="filter_fix">
+        <div class="shadow">
+        </div>
+        <div class="login_form">
+            <form class="py_form" method="post">
+                {% csrf_token %}
+                {{form}}
+                <button type="submit" class="conf_button_b">
+                    <div class="filter_fix conf_button">
+                        <div class="button_backing shadow"></div>
+                        <div>Войти</div>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+    <p>
+        или
+        <a href="/register">Зарегистрироваться</a>
+    </p>
+</div>
+<!-- <div class="filter_fix">
+    <div class="form_back"></div>
+    <div class="test"></div>
+</div> -->
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'main/header_base.html' %}
+
+{% block title %}
+COLRED
+{% endblock %}
+
+{% block username %}
+    {{ username }}
+{% endblock %}
+
+{% block ava_image %}main/images/avatars/{{ avatar }}.png{% endblock %}
+
+{% block content %}
+<div class="profiles">
+
+    {% for chr in characters %}
+    <a href="/redactor/{{chr.usr.id}}/{{chr.id}}">
+        <div class="listing">
+            <div class="char_logo">
+                <img src='/media/{{chr.portrait}}'
+                    alt="+">
+            </div>
+            <div>{{chr.name}}</div>
+        </div>
+    </a>
+    {% endfor %}
+
+    <a href="/create_new">
+        <div class="listing addnew">
+            <div>Добавить новый</div>
+        </div>
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,928 @@
+.big_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    margin-top: 60px;
+}
+
+.little_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.little_button{
+    background: unset;
+}
+
+.btn_dv{
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.list {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.list input {
+    font-size: 1.15vw;
+    color: black;
+}
+
+.list input::placeholder {
+    opacity: 1; 
+}
+
+.book {
+    background: url(../images/list/list_book_empty.svg) no-repeat;
+    background-size: cover;
+    min-width: 70vw;
+    height: 49vw;
+    display: flex;
+}
+
+.book>div {
+    width: 50%;
+    height: fit-content;
+    /* background-color: rgba(0, 255, 255, 0.308); */
+}
+
+.left_page {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .left_page div {
+    background-color: rgba(137, 43, 226, 0.199);
+    width: 80px;
+    height: 80px;
+} */
+
+
+.left_page .up {
+    display: flex;
+    flex-direction: row;   
+    height: 24.5vw;
+}
+
+.left_page .char_logo {
+    margin: 5vw 1vw 0 5vw;
+    padding: 0;
+    width: 14.7vw;
+    height: 17.25vw;
+}
+
+.left_page .char_stats {
+    display: flex;
+    flex-direction: column;
+    width: 14.3vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.placeholder {
+    width: 7.5vw;
+    height: 5.1vw;
+    /* background-color: rgba(255, 0, 0, 0.534); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.15vw;
+}
+
+.txt_fields{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+}
+
+div.txt_fields > *{
+    min-width: 6vw;
+}
+
+.lvl {
+    height: 7.8vw;
+    margin-top: 3.5vw;
+}
+
+.lvl>div:nth-child(1){
+    width: 5vw;
+    height: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.2vw;
+}
+
+.xp {
+    height: 5.1vw;
+}
+
+.xp>div:nth-child(1){
+    margin-top: 1vw;
+}
+
+.class {
+    width: 9vw;
+    margin-right: 0.8vw;
+}
+
+.class>div:nth-child(1){
+    margin-top: 1vw;
+}
+
+.down {
+    width: 100%;
+    height: 19.5vw;
+}
+
+.char_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: inherit;
+    height: 18vw;
+}
+
+.char_info .placeholder {
+    width: 25vw;
+    height: 2.5vw; 
+}
+
+.char_info .name {
+    height: 1.4vw;
+    
+}
+
+/* .char_info input {
+    width: 20vw;
+} */
+
+/* =================================================== */
+/* =================================================== */
+/* =================================================== */
+
+.right_page .up {
+    display: flex;
+    height: 25.5vw;
+    /* background-color: rgba(0, 255, 255, 0.39); */
+    flex-direction: column;
+    align-items: center;
+}
+
+.stats {
+    background: url(../images/list/right/list_book_hex.svg) no-repeat;
+    background-size: cover;
+    width: 7vw;
+    height: 6.8vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.stats>div:nth-child(1){
+    margin-top: 0.6vw;
+    text-transform: uppercase;
+    font-size: 0.75vw;
+}
+
+.stats>div:nth-child(2){
+    margin-bottom: 2.5vw;
+    font-size: 2.8vw;
+}
+
+.right_page .up>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 0.89vw;
+    margin-top: 0.85vw;
+    width: 16.5vw;
+}
+
+.upper {
+    margin-top: 3.3vw !important;
+}
+
+.middle {
+    /* margin-top: 1.7vw; */
+    width: 25vw !important;
+}
+
+.lower {
+    margin-right: 0.59vw !important;
+}
+
+/* ========================================================== */
+/* ========================================================== */
+/* ========================================================== */
+
+.up_input_fix {
+    margin-top: -25.5vw;
+}
+
+.up_input_fix>div>div{
+    background: url(../images/list/right/list_book_circle.svg) no-repeat;
+    background-size: cover;
+    width: 3.01vw;
+    height: 2.78vw;
+    display: flex;
+}
+
+.up_input_fix>div>div>input{
+    width: inherit;
+}
+
+.right_page .up_input_fix>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 0.89vw;
+    margin-top: 4.5vw;
+    width: 21.5vw;
+}
+
+.up_input_fix .upper {
+    margin-top: 6.3vw !important;
+}
+
+.up_input_fix .middle {
+    /* margin-top: 1.7vw; */
+    width: 30vw !important;
+    margin-right: 0.8vw !important;
+}
+
+.up_input_fix .lower {
+    margin-right: 0.59vw !important;
+}
+
+
+.tree{
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: rgba(0, 0, 255, 0.425); */
+    height: 10vw;
+    align-items: center;
+}
+
+.tree>div{
+    height: 7.5vw;
+    width: 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mm input {
+    width: 5vw;
+    height: 50%;
+    font-size: 2.8vw;
+}
+
+.mm {
+    width: 6.2vw;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mw{
+    padding: 0 7px;
+}
+
+.title{
+    background: url(../images/list/right/list_book_field.svg) no-repeat;
+    background-size: cover;
+    width: 7vw;
+    text-align: center;
+    height: 2vw;
+}
+
+.save .mm {
+    background: url(../images/list/right/list_book_armor.svg) no-repeat;
+    background-size: cover;
+    width: 5vw;
+}
+
+.hp .mm {
+    background: url(../images/list/right/list_book_hp.svg) no-repeat;
+    background-size: cover;
+}
+
+.speed .mm {
+    background: url(../images/list/right/list_book_speed.svg) no-repeat;
+    background-size: cover;
+}
+
+.speed input{
+    margin-right: 0.5vw;
+}
+
+
+/*  */
+/*  */
+
+.right_page .down {
+    font-size: 0.75vw;
+}
+
+.twin>div{
+    height: 7.5vw;
+    width: 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.death{
+    margin-left: 4vw;
+}
+
+.whatr{
+    margin-right: 4vw;
+}
+
+.twin .mm input{
+    font-size: 2.4vw;
+}
+
+.twin{
+    height: 11vw;
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: rgba(137, 43, 226, 0.582); */
+}
+
+.death .mm {
+    background: url(../images/list/right/list_book_death.svg) no-repeat;
+    background-size: cover;
+    width: 5.3vw;
+}
+
+.death input{
+    margin-bottom: 1vw;
+}
+
+.whatr .mm {
+    background: url(../images/list/right/list_book_wound.svg) no-repeat;
+    background-size: cover;
+    width: 3vw;
+}
+.whatr input {
+    margin-top: 1vw;
+}
+
+
+/* =========================================================== */
+/* =========================================================== */
+/* =========================================================== */
+/* =========================================================== */
+
+
+.add_info {
+    display: none;
+    flex-direction: row;
+    padding-top: 2vw;
+    width: 70vw;
+    height: 60vw;
+    background-color: rgba(255, 0, 0, 0.623);
+    justify-content: space-evenly;
+}
+
+.add_info>div{
+    width: 21vw;
+}
+
+.feats {
+    background: url(../images/list/add_info/list_skills.svg) no-repeat;
+    background-size: cover;
+    height: 55vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.block_name {
+    background-color: rgba(153, 205, 50, 0.822);
+    width: 17vw;
+    height: 4vw;
+}
+
+.feat {
+    background-color: rgba(153, 205, 50, 0.822);
+    width: 17vw;
+    height: 3vw;
+}
+
+#id_name { 
+    width: inherit;
+}
+
+#id_xp { 
+    width: 4vw;
+}
+
+#id_mortal_wounds {
+    margin-top: 2vw;
+}
+
+
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+/* I AM THE BORDER============================================================ */
+
+
+
+@media screen and (max-width: 750px) {
+    .big_form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center; 
+        margin-top: 60px;
+    }
+    
+    .little_form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center; 
+    }
+    
+    .little_button{
+        background: unset;
+    }
+    
+    .btn_dv{
+        z-index: 10;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .list {
+        margin: 0 auto;
+        width: fit-content;
+    }
+    
+    .list input {
+        font-size: calc(2.685714285714286*1.15vw);
+        color: black;
+    }
+    
+    .list input::placeholder {
+        opacity: 1; 
+    }
+    
+    .book {
+        background: url(../images/list/list_book_empty.svg) no-repeat;
+        background-size: cover;
+        min-width: calc(2.685714285714286*70vw);
+        height: calc(2.685714285714286*49vw);
+        display: flex;
+    }
+    
+    .book>div {
+        width: 50%;
+        height: fit-content;
+        /* background-color: rgba(0, 255, 255, 0.308); */
+    }
+    
+    .left_page {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* .left_page div {
+        background-color: rgba(137, 43, 226, 0.199);
+        width: 80px;
+        height: 80px;
+    } */
+    
+    .left_page .up {
+        display: flex;
+        flex-direction: row;   
+        height: calc(2.685714285714286*24.5vw);
+    }
+    
+    .left_page .char_logo {
+        margin: calc(2.685714285714286*5vw) calc(2.685714285714286*1vw) 0 calc(2.685714285714286*5vw);
+        padding: 0;
+        width: calc(2.685714285714286*14.7vw);
+        height: calc(2.685714285714286*17.25vw);
+    }
+    
+    .left_page .char_stats {
+        display: flex;
+        flex-direction: column;
+        width: calc(2.685714285714286*14.3vw);
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .placeholder {
+        width: calc(2.685714285714286*7.5vw);
+        height: calc(2.685714285714286*5.1vw);
+        /* background-color: rgba(255, 0, 0, 0.534); */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        font-size: calc(2.685714285714286*1.15vw);
+    }
+    
+    .txt_fields{
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 0;
+    }
+    
+    div.txt_fields > *{
+        min-width: calc(2.685714285714286*6vw);
+    }
+    
+    .lvl {
+        height: calc(2.685714285714286*7.8vw);
+        margin-top: calc(2.685714285714286*3.5vw);
+    }
+    
+    .lvl>div:nth-child(1){
+        width: calc(2.685714285714286*5vw);
+        height: calc(2.685714285714286*5vw);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: calc(2.685714285714286*0.2vw);
+    }
+    
+    .xp {
+        height: calc(2.685714285714286*5.1vw);
+    }
+    
+    .xp>div:nth-child(1){
+        margin-top: calc(2.685714285714286*1vw);
+    }
+    
+    .class {
+        width: calc(2.685714285714286*9vw);
+        margin-right: calc(2.685714285714286*0.8vw);
+    }
+    
+    .class>div:nth-child(1){
+        margin-top: calc(2.685714285714286*1vw);
+    }
+    
+    .down {
+        width: 100%;
+        height: calc(2.685714285714286*19.5vw);
+    }
+    
+    .char_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: inherit;
+        height: calc(2.685714285714286*18vw);
+    }
+    
+    .char_info .placeholder {
+        width: calc(2.685714285714286*25vw);
+        height: calc(2.685714285714286*2.5vw); 
+    }
+    
+    .char_info .name {
+        height: calc(2.685714285714286*1.4vw);
+        
+    }
+    
+    /* .char_info input {
+        width: calc(2.685714285714286*20vw);
+    } */
+    
+    /* =================================================== */
+    /* =================================================== */
+    /* =================================================== */
+    
+    .right_page .up {
+        display: flex;
+        height: calc(2.685714285714286*25.5vw);
+        /* background-color: rgba(0, 255, 255, 0.39); */
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stats {
+        background: url(../images/list/right/list_book_hex.svg) no-repeat;
+        background-size: cover;
+        width: calc(2.685714285714286*7vw);
+        height: calc(2.685714285714286*6.8vw);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .stats>div:nth-child(1){
+        margin-top: calc(2.685714285714286*0.6vw);
+        text-transform: uppercase;
+        font-size: calc(2.685714285714286*0.75vw);
+    }
+    
+    .stats>div:nth-child(2){
+        margin-bottom: calc(2.685714285714286*1.5vw);
+        font-size: calc(2.685714285714286*2.8vw);
+    }
+    
+    .right_page .up>div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-right: calc(2.685714285714286*0.89vw);
+        margin-top: calc(2.685714285714286*0.85vw);
+        width: calc(2.685714285714286*16.5vw);
+    }
+    
+    .upper {
+        margin-top: calc(2.685714285714286*3.3vw) !important;
+    }
+    
+    .middle {
+        /* margin-top: calc(2.685714285714286*1.7vw); */
+        width: calc(2.685714285714286*25vw) !important;
+    }
+    
+    .lower {
+        margin-right: calc(2.685714285714286*0.59vw) !important;
+    }
+    
+    /* ========================================================== */
+    /* ========================================================== */
+    /* ========================================================== */
+    
+    .up_input_fix {
+        margin-top: calc(2.685714285714286*-25.5vw);
+    }
+    
+    .up_input_fix>div>div{
+        background: url(../images/list/right/list_book_circle.svg) no-repeat;
+        background-size: cover;
+        width: calc(2.685714285714286*3.01vw);
+        height: calc(2.685714285714286*2.78vw);
+        display: flex;
+    }
+    
+    .up_input_fix>div>div>input{
+        width: inherit;
+    }
+    
+    .right_page .up_input_fix>div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-right: calc(2.685714285714286*0.89vw);
+        margin-top: calc(2.685714285714286*4.5vw);
+        width: calc(2.685714285714286*21.5vw);
+    }
+    
+    .up_input_fix .upper {
+        margin-top: calc(2.685714285714286*6.3vw) !important;
+    }
+    
+    .up_input_fix .middle {
+        /* margin-top: calc(2.685714285714286*1.7vw); */
+        width: calc(2.685714285714286*30vw) !important;
+        margin-right: calc(2.685714285714286*0.8vw) !important;
+    }
+    
+    .up_input_fix .lower {
+        margin-right: calc(2.685714285714286*0.59vw) !important;
+    }
+    
+    .tree{
+        display: flex;
+        justify-content: space-evenly;
+        /* background-color: rgba(0, 0, 255, 0.425); */
+        height: calc(2.685714285714286*10vw);
+        align-items: center;
+    }
+    
+    .tree>div{
+        height: calc(2.685714285714286*7.5vw);
+        width: calc(2.685714285714286*6vw);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .mm input {
+        width: calc(2.685714285714286*5vw);
+        height: 50%;
+        font-size: calc(2.685714285714286*2.8vw);
+    }
+    
+    .mm {
+        width: calc(2.685714285714286*6.2vw);
+        height: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #mw{
+        padding: 0 7px;
+    }
+    
+    .title{
+        background: url(../images/list/right/list_book_field.svg) no-repeat;
+        background-size: cover;
+        width: calc(2.685714285714286*7vw);
+        text-align: center;
+        height: calc(2.685714285714286*2vw);
+    }
+    
+    .save .mm {
+        background: url(../images/list/right/list_book_armor.svg) no-repeat;
+        background-size: cover;
+        width: calc(2.685714285714286*5vw);
+    }
+    
+    .hp .mm {
+        background: url(../images/list/right/list_book_hp.svg) no-repeat;
+        background-size: cover;
+    }
+    
+    .speed .mm {
+        background: url(../images/list/right/list_book_speed.svg) no-repeat;
+        background-size: cover;
+    }
+    
+    .speed input{
+        margin-right: calc(2.685714285714286*0.5vw);
+    }
+    
+    /*  */
+    /*  */
+    
+    .right_page .down {
+        font-size: calc(2.685714285714286*0.75vw);
+    }
+    
+    .twin>div{
+        height: calc(2.685714285714286*7.5vw);
+        width: calc(2.685714285714286*6vw);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .death{
+        margin-left: calc(2.685714285714286*4vw);
+    }
+    
+    .whatr{
+        margin-right: calc(2.685714285714286*4vw);
+    }
+    
+    .twin .mm input{
+        font-size: calc(2.685714285714286*2.4vw);
+    }
+    
+    .twin{
+        height: calc(2.685714285714286*11vw);
+        width: inherit;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        /* background-color: rgba(137, 43, 226, 0.582); */
+    }
+    
+    .death .mm {
+        background: url(../images/list/right/list_book_death.svg) no-repeat;
+        background-size: cover;
+        width: calc(2.685714285714286*5.3vw);
+    }
+    
+    .death input{
+        margin-bottom: calc(2.685714285714286*1vw);
+    }
+    
+    .whatr .mm {
+        background: url(../images/list/right/list_book_wound.svg) no-repeat;
+        background-size: cover;
+        width: calc(2.685714285714286*3vw);
+    }
+    .whatr input {
+        margin-top: calc(2.685714285714286*1vw);
+    }
+    
+    /* =========================================================== */
+    /* =========================================================== */
+    /* =========================================================== */
+    /* =========================================================== */
+    
+    .add_info {
+        display: none;
+        flex-direction: row;
+        padding-top: calc(2.685714285714286*2vw);
+        width: calc(2.685714285714286*70vw);
+        height: calc(2.685714285714286*60vw);
+        background-color: rgba(255, 0, 0, 0.623);
+        justify-content: space-evenly;
+    }
+    
+    .add_info>div{
+        width: calc(2.685714285714286*21vw);
+    }
+    
+    .feats {
+        background: url(../images/list/add_info/list_skills.svg) no-repeat;
+        background-size: cover;
+        height: calc(2.685714285714286*55vw);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .block_name {
+        background-color: rgba(153, 205, 50, 0.822);
+        width: calc(2.685714285714286*17vw);
+        height: calc(2.685714285714286*4vw);
+    }
+    
+    .feat {
+        background-color: rgba(153, 205, 50, 0.822);
+        width: calc(2.685714285714286*17vw);
+        height: calc(2.685714285714286*3vw);
+    }    
+
+    /* ================================================ */
+    .book{
+      flex-direction: column !important;
+      background: url(../images/list/list_book_empty_mobile_1_simple.svg) no-repeat !important;
+      background-size: auto !important;
+      background-size: cover !important;
+      min-width: 94vw !important;
+      height: 262vw !important;
+    }
+    .left_page {
+        margin-bottom: 12.5vw;
+    }
+
+    .book>div{
+      width: 100%;
+    }
+
+    .body {
+        overflow-x: hidden;
+    }
+
+    #id_xp { 
+        width: 12vw;
+    }
+
+    main {
+        margin: 20px 0 !important;
+    }
+
+    #id_mortal_wounds {
+        width: 10vw;
+        margin-top: 7vw;
+        margin-right: 5vw;
+    }
+  }
+  

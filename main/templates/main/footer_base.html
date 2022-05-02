@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/main_style.css' %}">
+    <link rel="icon" href="{% static 'main/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'main/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'main/css/floating_search.css' %}">
+    {% block head_input %}{% endblock %}
+    {% block list %}{% endblock %}
+</head>
+
+<body>
+        {% block header %}{% endblock %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <div class="about">
+            <p>Поляков Д.</p>
+            <p>Илюшик С.</p>
+            <p>Шилакин И.</p>
+            <br>
+            <p>Группа АА-19-05</p>
+        </div>
+        <div class="company-info">
+            Слава свободному софту!
+            <div class="company-logo"></div>
+        </div>
+    </footer>
+</body>
+
+</html>

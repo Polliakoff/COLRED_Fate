@@ -1,0 +1,287 @@
+{% extends 'main/header_base.html' %}
+{% block list %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/css/list.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/lk.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous">
+    </script>
+<!-- <script type="text/javascript" src="{% static 'main/js/login.js' %}"></script> -->
+{% endblock %}
+
+{% block title %}
+redacted
+{% endblock %}
+
+{% block username %}
+{{ username }}
+{% endblock %}
+
+{% block ava_image %}main/images/avatars/{{ avatar }}.png{% endblock %}
+
+{% block content %}
+<div id="popup" class="popup">
+    <div class="popup_body">
+        <div class="popup_content">
+            <a href="#the_header" class="popup_close">=X=</a>
+            <h3 class="popup_title">Выберите портрет песонажа</h3>
+            <br>
+            <form method="post" class="little_form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{portrait_form}}
+                <br>
+                <button type="submit" class="little_button">=V=</button>
+            </form>
+        </div>
+    </div>
+</div>
+<form method="post" class="big_form">
+    {% csrf_token %}
+    
+    <div class="list">
+        <div class="book shadow">
+            <div class="left_page">
+                <div class="up">
+                    <a href="#popup">
+                        <div class="char_logo">
+                            <img src="/media/{{current_character.portrait}}" alt="+">
+                        </div>
+                    </a>
+                    <div class="char_stats">
+                        <div class="listning placeholder lvl">
+                            <div class="class_lvl">
+                                <!-- <input type="text" name="" id="" placeholder="3" maxlength="2"> -->
+                                <div id="class_lvl"></div>
+                            </div>
+                            <div>Уровень</div>
+                        </div>
+                        <div class="listning placeholder xp">
+                            <div class="">
+                                <!-- <input type="text" name="" id="" placeholder="3000" maxlength="5"> -->
+                                {{ form.xp }}
+                            </div>
+                            <div>Опыт</div>
+                        </div>
+                        <div class="listning placeholder class">
+                            <div class="">
+                                <!-- <input type="text" name="" id="" placeholder="Воин" maxlength="13"> -->
+                                {{ form.chr_class }}
+                            </div>
+                            <div>Класс</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="down">
+                    <div class="char_info">
+                        <div class="placeholder name">
+                            Имя персонажа
+                        </div>
+                        <div class="placeholder">
+                            <!-- <input type="text" name="" id="" placeholder="________"> -->
+                            {{ form.name }}
+                        </div>
+                        <div class="placeholder">
+                            <div class="txt_fields">
+                                <p style="margin-top: 5px;">Прошлое: </p>
+                                <!-- <input type="text" name="" id="" placeholder="________"
+                                    style="margin-top: 5px;"> -->
+                                {{ form.background }}
+                                <p style="margin-top: 5px;">Божество: </p>
+                                <!-- <input type="text" name="" id="" placeholder="________"
+                                    style="margin-top: 5px;"> -->
+                                {{ form.diety }}
+                            </div>
+                        </div>
+                        <div class="placeholder">
+                            <div class="txt_fields">
+                                <p style="margin-top: 5px;">Происхождение: </p>
+                                <!-- <input type="text" name="" id="" placeholder="________"
+                                    style="margin-top: 5px;"> -->
+                                {{ form.origin }}
+                            </div>
+                        </div>
+                        <div class="placeholder">
+                            <div class="txt_fields">
+                                <p style="margin-top: 5px;">Мировозрение: </p>
+                                <!-- <input type="text" name="" id="" placeholder="________"
+                                    style="margin-top: 5px;"> -->
+                                {{ form.worldview }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right_page">
+                <div class="up">
+                    <div class="upper">
+                        <div class="stats">
+                            <div>сила</div>
+                            <div class="STR"></div>
+                        </div>
+                        <div class="stats">
+                            <div>харизма</div>
+                            <div class="CHR"></div>
+                        </div>
+                    </div>
+                    <div class="middle">
+                        <div class="stats">
+                            <div>ловкость</div>
+                            <div class="DX"></div>
+                        </div>
+                        <div class="stats">
+                            <div>мудрость</div>
+                            <div class="WIS"></div>
+                        </div>
+                    </div>
+                    <div class="lower">
+                        <div class="stats">
+                            <div>телослож.</div>
+                            <div class="CON"></div>
+                        </div>
+                        <div class="stats">
+                            <div>интеллект</div>
+                            <div class="IN"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="up up_input_fix">
+                    <div class="upper">
+                        <div>
+                            <!-- <input type="text" id="STR"> -->
+                            {{ form.attrib_strength }}
+                        </div>
+                        <div>
+                            <!-- <input type="text" id="CHR"> -->
+                            {{ form.attrib_charisma }}
+                        </div>
+                    </div>
+                    <div class="middle">
+                        <div>
+                            <!-- <input type="text" id="DX"> -->
+                            {{ form.attrib_agility }}
+                        </div>
+                        <div>
+                            <!-- <input type="text" id="WIS"> -->
+                            {{ form.attrib_wisdom }}
+                        </div>
+                    </div>
+                    <div class="lower">
+                        <div>
+                            <!-- <input type="text" id="CON"> -->
+                            {{ form.attrib_endurance }}
+                        </div>
+                        <div>
+                            <!-- <input type="text" id="IN"> -->
+                            {{ form.attrib_intelligence }}
+                        </div>
+                    </div>
+                </div>
+                <div class="down">
+                    <div class="tree">
+                        <div class="save">
+                            <div class="mm">
+                                <!-- <input type="text"> -->
+                                {{form.armour_class}}
+                            </div>
+                            <div class="title">
+                                Класс Брони
+                            </div>
+                        </div>
+                        <div class="hp">
+                            <div class="mm">
+                                <!-- <input type="text"> -->
+                                {{form.hp}}
+                            </div>
+                            <div class="title">
+                                Здоровье
+                            </div>
+                        </div>
+                        <div class="speed">
+                            <div class="mm">
+                                <!-- <input type="text"> -->
+                                {{form.speed}}
+                            </div>
+                            <div class="title">
+                                Скорость
+                            </div>
+                        </div>
+                    </div>
+                    <div class="twin">
+                        <div class="death">
+                            <div class="mm">
+                                <!-- <input type="text"> -->
+                                {{form.is_dying}}
+                            </div>
+                            <div class="title">
+                                При смерти
+                            </div>
+                        </div>
+                        <div class="whatr">
+                            <div class="mm" id = 'mw'>
+                                <!-- <input type="text"> -->
+                                {{form.mortal_wounds}}
+                            </div>
+                            <div class="title">
+                                Тяж.раны
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add_info">
+            <div class="left">
+                <div class="feats">
+                    <div class="block_name">
+                        Черты
+                    </div>
+                    <div class="feat">
+                        
+                    </div>
+                    <div class="feat"></div>
+                    <div class="feat"></div>
+
+                    <div class="feat"></div>
+                    <div class="feat"></div>
+                    <div class="feat"></div>
+
+                    <div class="feat"></div>
+                    <div class="feat"></div>
+                    <div class="feat"></div>
+
+                    <div class="feat"></div>
+                    <div class="feat"></div>
+                    <div class="feat"></div>
+
+                    <div class="feat"></div>
+                    <div class="feat"></div>
+                    <div class="feat"></div>
+
+                    <div class="feat"></div>
+                    <div class="feat"></div>
+                </div>
+            </div>
+            <div class="center">
+                <div class="feats">
+
+                </div>
+            </div>
+            <div class="right">
+                <div class="feats">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn_dv">
+        <button type="submit" class="conf_button_b">
+            <div class="filter_fix conf_button">
+                <div class="button_backing shadow"></div>
+                <div>Редакция Архивов</div>
+            </div>
+        </button>
+    </div>
+</form>
+<script type="text/javascript" src="{% static 'main/js/list.js' %}"></script>
+{% endblock %}
