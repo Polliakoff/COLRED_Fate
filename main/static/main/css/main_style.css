@@ -303,8 +303,27 @@ main {
   margin-top: 150px;
 }
 
+.main_grid{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.inform_box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 20;
+  background-color: #ffea9f;
+  border-radius: 10px;
+  margin: 10px;
+}
+
 .profiles {
   display: flex; 
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
@@ -314,7 +333,6 @@ main {
 }
 
 .listing {
-  flex-grow: 20;
   color: #434343;
   background-color: #ffea9f;
   border-radius: 10px;
