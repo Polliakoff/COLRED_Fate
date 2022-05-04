@@ -12,7 +12,7 @@ def main(request):
     if av.custom_avatar:
         path_string = '/media/' + str(av.portrait)
     else:
-        path_string = '/static/main/images/avatars/' + av.name + '.png'
+        path_string = '/static/main/images/avatars/blank.png'
 
     cont = {
         'username' : request.user.username,
@@ -23,28 +23,41 @@ def main(request):
 @login_required
 def docs(request):
     av = request.user.chosen_avatar
+
+    if av.custom_avatar:
+        path_string = '/media/' + str(av.portrait)
+    else:
+        path_string = '/static/main/images/avatars/blank.png'
     cont = {
         'username' : request.user.username,
-        'avatar' : av,
+        'avatar' : path_string,
     }
     return render(request, 'main/docs.html', cont)
 
 @login_required
 def search(request):
     av = request.user.chosen_avatar
+    if av.custom_avatar:
+        path_string = '/media/' + str(av.portrait)
+    else:
+        path_string = '/static/main/images/avatars/blank.png'
     cont = {
         'username' : request.user.username,
-        'avatar' : av,
+        'avatar' : path_string,
     }
     return render(request, 'main/search.html', cont)
 
 @login_required
 def characters(request):
     av = request.user.chosen_avatar
+    if av.custom_avatar:
+        path_string = '/media/' + str(av.portrait)
+    else:
+        path_string = '/static/main/images/avatars/blank.png'
     chrctrs = request.user.character_set.all()
     cont = {
         'username' : request.user.username,
-        'avatar' : av,
+        'avatar' : path_string,
         'characters': chrctrs,
     }
     return render(request, 'main/characters.html', cont)
@@ -57,9 +70,8 @@ def lk(response):
     if av.custom_avatar:
         path_string = '/media/' + str(av.portrait)
     else:
-        path_string = '/static/main/images/avatars/' + av.name + '.png'
+        path_string = '/static/main/images/avatars/blank.png'
 
-    # ava_obj = Avatar_of_choice.objects.get(usr = response.user)
     portrait_form = Image_Upload_Form_ava_edition(instance=av)
 
     if response.method == "POST":
@@ -71,36 +83,10 @@ def lk(response):
             form = psw_ch(response.user)
             return(redirect('/lk'))
         else:
-            if response.POST.get('_blank'):
-                av.name = 'blank'
-                av.custom_avatar = False
-                av.save()
-                form = psw_ch(response.user)
-                return(redirect('/lk'))
-            elif response.POST.get('_elf'):
-                av.name = 'elf'
-                av.custom_avatar = False
-                av.save()
-                form = psw_ch(response.user)
-                return(redirect('/lk'))
-            elif response.POST.get('_dwarf'):
-                av.name = 'dwarf'
-                av.custom_avatar = False
-                av.save()
-                form = psw_ch(response.user)
-                return(redirect('/lk'))
-            elif response.POST.get('_cobalt'):
-                av.name = 'cobalt'
-                av.custom_avatar = False
-                av.save()
-                form = psw_ch(response.user)
-                return(redirect('/lk'))
-
-            else:
-                form = psw_ch(response.user, response.POST)
-                if form.is_valid():
-                    user = form.save()
-                    update_session_auth_hash(response, user)
+            form = psw_ch(response.user, response.POST)
+            if form.is_valid():
+                user = form.save()
+                update_session_auth_hash(response, user)
     else:
         form = psw_ch(response.user)
 
@@ -115,8 +101,17 @@ def lk(response):
 @login_required
 def redactor(request,usr_id,chr_id):
     av = request.user.chosen_avatar
+    if av.custom_avatar:
+        path_string = '/media/' + str(av.portrait)
+    else:
+        path_string = '/static/main/images/avatars/blank.png'
     chrctrs = request.user.character_set.all()
     current_character = Character.objects.get(id = chr_id)
+    
+    if current_character.custom_avatar:
+        path_string_chr = '/media/' + str(current_character.portrait)
+    else:
+        path_string_chr = '/static/main/images/avatars/blank.png'
 
     if not(usr_id == current_character.usr.id and usr_id == request.user.id):
         return redirect('/') 
@@ -151,6 +146,7 @@ def redactor(request,usr_id,chr_id):
 
         if sent_image_form.is_valid():
             current_character.portrait = request.FILES['portrait']
+            current_character.custom_avatar = True
             current_character.save()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
@@ -164,7 +160,8 @@ def redactor(request,usr_id,chr_id):
     
     cont = {
         'username' : request.user.username,
-        'avatar' : av,
+        'avatar' : path_string,
+        'chr_portrait': path_string_chr, 
         'form' : form,
         'portrait_form' : portrait_form,
         'current_character': current_character,

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Avatar_of_choice(models.Model):
     custom_avatar = models.BooleanField(default=False)
-    name = models.CharField('Название', max_length=50)
+    # name = models.CharField('Название', max_length=50)
     portrait = models.ImageField(upload_to ='user_images/',blank = True)
     usr = models.OneToOneField(User,on_delete=models.CASCADE,default='1',primary_key=True,related_name='chosen_avatar')
 
@@ -14,6 +14,7 @@ class Avatar_of_choice(models.Model):
 class Character(models.Model):
     name = models.CharField(max_length=100)
     portrait = models.ImageField(upload_to ='user_images/',blank = True)
+    custom_avatar = models.BooleanField(default=False)
     usr = models.ForeignKey(User, on_delete=models.CASCADE)
     chr_class = models.CharField(max_length=13,null=TRUE,blank=TRUE)
     xp = models.IntegerField(null=TRUE,blank=TRUE,default=0)

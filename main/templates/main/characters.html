@@ -12,7 +12,7 @@
     {{ username }}
 {% endblock %}
 
-{% block ava_image %}main/images/avatars/{{ avatar }}.png{% endblock %}
+{% block ava_image %}{{ avatar }}{% endblock %}
 
 {% block content %}
 <div class="main_grid">
@@ -21,8 +21,11 @@
         <a href="/redactor/{{chr.usr.id}}/{{chr.id}}">
             <div class="listing">
                 <div class="char_logo">
-                    <img src='/media/{{chr.portrait}}'
-                        alt="+">
+                    {% if chr.custom_avatar %}
+                        <img src='/media/{{chr.portrait}}' alt="+">
+                    {% else %}
+                        <img src='/static/main/images/avatars/blank.png' alt="+">
+                    {% endif %}
                 </div>
                 <div>{{chr.name}}</div>
             </div>

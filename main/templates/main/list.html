@@ -18,7 +18,7 @@ redacted
 {{ username }}
 {% endblock %}
 
-{% block ava_image %}main/images/avatars/{{ avatar }}.png{% endblock %}
+{% block ava_image %}{{ avatar }}{% endblock %}
 
 {% block content %}
 <div id="popup" class="popup">
@@ -45,7 +45,7 @@ redacted
                 <div class="up">
                     <a href="#popup">
                         <div class="char_logo">
-                            <img src="/media/{{current_character.portrait}}" alt="+">
+                            <img src="{{chr_portrait}}" alt="+">
                         </div>
                     </a>
                     <div class="char_stats">

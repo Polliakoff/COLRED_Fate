@@ -10,7 +10,7 @@ def register(response):
         if form.is_valid():
             form.save()
             u = form.cleaned_data["username"]
-            av = Avatar_of_choice(usr = User.objects.get(username = u), name = 'blank')
+            av = Avatar_of_choice(usr = User.objects.get(username = u))
             av.save()
             return redirect('main_page')
                 
