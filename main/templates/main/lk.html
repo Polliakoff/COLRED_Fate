@@ -19,7 +19,7 @@
     <a href="#popup">
         <div class="listing">
             <div class="char_logo">
-                <img src="{% get_static_prefix %}{{avatar}}" alt="big_ava">
+                <img src="{{avatar}}" alt="big_ava">
             </div>
             <div>{{big_username}}</div>
         </div>
@@ -43,7 +43,7 @@
     <div class="popup_body">
         <div class="popup_content">
             <a href="#the_header" class="popup_close">X</a>
-            <h3 class="popup_title">Выберите аватар</h3>
+            <h3 class="popup_title">Выберите аватар из предложенных</h3>
             <br>
             <form method="post">
                 {% csrf_token %}
@@ -81,6 +81,13 @@
                         </div>
                     </button>
                 </div>
+            </form>
+            <h3 class="popup_title">Или добавьте свой</h3>
+            <form method="post" class="little_form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{portrait_form}}
+                <br>
+                <button type="submit" class="little_button">=V=</button>
             </form>
         </div>
     </div>

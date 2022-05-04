@@ -3,7 +3,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Avatar_of_choice(models.Model):
+    custom_avatar = models.BooleanField(default=False)
     name = models.CharField('Название', max_length=50)
+    portrait = models.ImageField(upload_to ='user_images/',blank = True)
     usr = models.OneToOneField(User,on_delete=models.CASCADE,default='1',primary_key=True,related_name='chosen_avatar')
 
     def __str__(self):

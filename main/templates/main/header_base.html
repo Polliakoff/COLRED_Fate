@@ -44,7 +44,7 @@
             </div>
             <a href="{% url 'lk' %}" class="avatar">
                 <div class="under_ava">
-                    <img src="{% get_static_prefix %}{% block ava_image %}{% endblock %}" alt="ava">
+                    <img src="{% block ava_image %}{% endblock %}" alt="ava">
                 </div>
             </a>
         </div>

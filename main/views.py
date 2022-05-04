@@ -1,16 +1,22 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import Image_Upload_Form, psw_ch
+from .forms import Image_Upload_Form, Image_Upload_Form_ava_edition, psw_ch
 from .forms import Great_List_Form, Image_Upload_Form
 from django.contrib.auth import update_session_auth_hash
-from .models import Character
+from .models import Character, Avatar_of_choice
 
 @login_required
 def main(request):
     av = request.user.chosen_avatar
+
+    if av.custom_avatar:
+        path_string = '/media/' + str(av.portrait)
+    else:
+        path_string = '/static/main/images/avatars/' + av.name + '.png'
+
     cont = {
         'username' : request.user.username,
-        'avatar' : av,
+        'avatar' : path_string,
     }
     return render(request, 'main/main_page.html', cont)
 
@@ -45,37 +51,64 @@ def characters(request):
 
 @login_required
 def lk(response):
-    av = response.user.chosen_avatar
-    if response.method == "POST":
-        if response.POST.get('_blank'):
-            av.name = 'blank'
-            av.save(update_fields = ['name'])
-            form = psw_ch(response.user)
-        elif response.POST.get('_elf'):
-            av.name = 'elf'
-            av.save(update_fields = ['name'])
-            form = psw_ch(response.user)
-        elif response.POST.get('_dwarf'):
-            av.name = 'dwarf'
-            av.save(update_fields = ['name'])
-            form = psw_ch(response.user)
-        elif response.POST.get('_cobalt'):
-            av.name = 'cobalt'
-            av.save(update_fields = ['name'])
-            form = psw_ch(response.user)
 
+    av = response.user.chosen_avatar
+    
+    if av.custom_avatar:
+        path_string = '/media/' + str(av.portrait)
+    else:
+        path_string = '/static/main/images/avatars/' + av.name + '.png'
+
+    # ava_obj = Avatar_of_choice.objects.get(usr = response.user)
+    portrait_form = Image_Upload_Form_ava_edition(instance=av)
+
+    if response.method == "POST":
+        sent_image_form = Image_Upload_Form_ava_edition(response.POST)
+        if sent_image_form.is_valid():
+            av.portrait = response.FILES['portrait']
+            av.custom_avatar = True
+            av.save()
+            form = psw_ch(response.user)
+            return(redirect('/lk'))
         else:
-            form = psw_ch(response.user, response.POST)
-            if form.is_valid():
-                user = form.save()
-                update_session_auth_hash(response, user)
+            if response.POST.get('_blank'):
+                av.name = 'blank'
+                av.custom_avatar = False
+                av.save()
+                form = psw_ch(response.user)
+                return(redirect('/lk'))
+            elif response.POST.get('_elf'):
+                av.name = 'elf'
+                av.custom_avatar = False
+                av.save()
+                form = psw_ch(response.user)
+                return(redirect('/lk'))
+            elif response.POST.get('_dwarf'):
+                av.name = 'dwarf'
+                av.custom_avatar = False
+                av.save()
+                form = psw_ch(response.user)
+                return(redirect('/lk'))
+            elif response.POST.get('_cobalt'):
+                av.name = 'cobalt'
+                av.custom_avatar = False
+                av.save()
+                form = psw_ch(response.user)
+                return(redirect('/lk'))
+
+            else:
+                form = psw_ch(response.user, response.POST)
+                if form.is_valid():
+                    user = form.save()
+                    update_session_auth_hash(response, user)
     else:
         form = psw_ch(response.user)
 
     cont = {
         'big_username' : response.user.username,
         'form':form,
-        'avatar' : 'main/images/avatars/'+str(av)+'.png',
+        'portrait_form':portrait_form,
+        'avatar' : path_string,
     }
     return render(response, 'main/lk.html', cont)    
 
@@ -117,7 +150,6 @@ def redactor(request,usr_id,chr_id):
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
         if sent_image_form.is_valid():
-            print('WE ARE HERE')
             current_character.portrait = request.FILES['portrait']
             current_character.save()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))

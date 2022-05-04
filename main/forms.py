@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import PasswordChangeForm
 from django.forms import ModelForm
 from .models import Character
+from .models import Avatar_of_choice
 from django.forms import NumberInput, TextInput
 
 class psw_ch(PasswordChangeForm):
@@ -104,6 +105,13 @@ class Great_List_Form(ModelForm):
 class Image_Upload_Form(ModelForm):
     class Meta:
         model = Character
+        fields = [
+            'portrait',
+        ]
+
+class Image_Upload_Form_ava_edition(ModelForm):
+    class Meta:
+        model = Avatar_of_choice
         fields = [
             'portrait',
         ]
