@@ -144,7 +144,12 @@
     align-items: center; 
 }
 
+/* .little_form>input{
+    display: none;
+} */
+
 .little_button{
+    display: none;
     background-color: #dfc35f;
     border-radius: 5px;
     border: none;
