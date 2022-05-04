@@ -8,13 +8,40 @@ from .models import Character
 @login_required
 def main(request):
     av = request.user.chosen_avatar
+    cont = {
+        'username' : request.user.username,
+        'avatar' : av,
+    }
+    return render(request, 'main/main_page.html', cont)
+
+@login_required
+def docs(request):
+    av = request.user.chosen_avatar
+    cont = {
+        'username' : request.user.username,
+        'avatar' : av,
+    }
+    return render(request, 'main/docs.html', cont)
+
+@login_required
+def search(request):
+    av = request.user.chosen_avatar
+    cont = {
+        'username' : request.user.username,
+        'avatar' : av,
+    }
+    return render(request, 'main/search.html', cont)
+
+@login_required
+def characters(request):
+    av = request.user.chosen_avatar
     chrctrs = request.user.character_set.all()
     cont = {
         'username' : request.user.username,
         'avatar' : av,
         'characters': chrctrs,
     }
-    return render(request, 'main/main_page.html', cont)
+    return render(request, 'main/characters.html', cont)
 
 @login_required
 def lk(response):

@@ -1,3 +1,6 @@
+#player_info{
+    display: none;
+}
 .lk_layout{
     display: flex;
     justify-content: center;
@@ -6,10 +9,26 @@
 }
 
 .form_layout{
+    padding: 15px;
+    color: #434343;
+    margin: 30px;
+    box-shadow: 0px 6px 6px 1px #1c1e2038;
+    border-radius: 10px;
+    background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+.form_layout>a{
+    padding: 2px;
+    color: #434343;
+}
+
+.form_layout>a:hover{
+    background-color: #ffea9f;
+    border-radius: 5px;
 }
 
 .reg_form{
@@ -19,9 +38,23 @@
     align-items: center;
 }
 
-.lk_logo{
-    height: auto;
-    width: 20rem;
+.reg_form>input{
+    border-radius: 5px;
+    background-color: #ffea9f;
+}
+
+.passw_button{
+    font-size: medium;
+    padding: 2px;
+    color: #434343;
+    background: unset;
+    border: none;
+    margin: 10px;
+}
+
+.passw_button:hover{
+    background-color: #ffea9f;
+    border-radius: 5px;
 }
 
 .popup{
@@ -60,7 +93,9 @@
 }
 
 .popup_content{
-    background-color: white;
+    color: #434343;
+    border-radius: 10px;
+    background-color: #ffea9f;
     max-width: 600px;
     padding: 30px;
     position: relative;
@@ -68,10 +103,17 @@
 }
 
 .popup_close{
+    color: #434343;
     position: absolute;
     right: 10px;
     top: 10px;
     text-decoration: none;
+    padding: 2px;
+}
+
+.popup_close:hover{
+    background-color: #dfc35f;
+    border-radius: 5px;
 }
 
 .ava_change_button{

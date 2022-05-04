@@ -76,10 +76,6 @@ body {
   }
 }
 
-.shadow{
-  filter: drop-shadow( 3px 3px 2px rgba(34, 60, 80, 0.5));
-}
-
 .filter_fix>div:nth-child(2) {
   width: 100%;
   z-index: 999;
@@ -144,6 +140,19 @@ header .title_head {
   max-height: 60px;
 }
 
+.sinopsis{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page_name{
+  margin: 5px;
+  font-size: small;
+  font-weight: bold;
+}
+
 @media screen and (max-width: 730px) {
   .sinopsis {
     display: none;
@@ -201,6 +210,7 @@ header .lknick .nickname {
 }
 
 .nav_link{
+  margin: 5px 0;
   padding: 3px;
 }
 
@@ -304,6 +314,7 @@ main {
 }
 
 .main_grid{
+  height: 90%;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -312,11 +323,13 @@ main {
 }
 
 .inform_box{
+  color: #434343;
+  box-shadow: 0px 6px 6px 1px #1c1e2038;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 20;
-  background-color: #ffea9f;
+  background-color: #f9f9f9;
   border-radius: 10px;
   margin: 10px;
 }
@@ -333,6 +346,7 @@ main {
 }
 
 .listing {
+  box-shadow: 0px 6px 6px 1px #1c1e2038;
   color: #434343;
   background-color: #ffea9f;
   border-radius: 10px;
