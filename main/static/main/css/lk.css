@@ -1,6 +1,13 @@
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #player_info{
     display: none;
 }
+
 .lk_layout{
     display: flex;
     justify-content: center;

@@ -1,0 +1,9 @@
+@media screen and (max-width: 842px) {
+    .inform_box{
+      display: none;
+    }
+  
+    .main_grid{
+      justify-content: center;
+    }
+  }

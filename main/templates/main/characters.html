@@ -8,6 +8,11 @@
 Персонажи
 {% endblock %}
 
+{% block head_input %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/css/chr.css' %}">
+{% endblock %}
+
 {% block username %}
     {{ username }}
 {% endblock %}
