@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import Image_Upload_Form, Image_Upload_Form_ava_edition, psw_ch
-from .forms import Image_Upload_Form
+from .forms import Image_Upload_Form, name_desc_form
 from django.contrib.auth import update_session_auth_hash
 from .models import Character, Avatar_of_choice
 
@@ -76,13 +76,15 @@ def lk(response):
 
     if response.method == "POST":
         sent_image_form = Image_Upload_Form_ava_edition(response.POST)
-        if sent_image_form.is_valid():
+        if 'ava_form' in response.POST and sent_image_form.is_valid():
+            print('WE ARE HERE')
             av.portrait = response.FILES['portrait']
             av.custom_avatar = True
             av.save()
             form = psw_ch(response.user)
             return(redirect('/lk'))
         else:
+            print('WE ARE HERE_1')
             form = psw_ch(response.user, response.POST)
             if form.is_valid():
                 user = form.save()
@@ -116,19 +118,29 @@ def redactor(request,usr_id,chr_id):
         return redirect('/') 
 
     if request.method == 'POST':
-        sent_image_form = Image_Upload_Form(request.POST)
-        if sent_image_form.is_valid():
+        form_1 = name_desc_form(request.POST)
+        sent_image_form = Image_Upload_Form(request.POST, request.FILES)
+        if 'ava_form' in request.POST and sent_image_form.is_valid():
+            print('WE ARE HERE _1')
             current_character.portrait = request.FILES['portrait']
             current_character.custom_avatar = True
             current_character.save()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+        if 'form_1' in request.POST and form_1.is_valid():
+            print('WE ARE HERE')
+            current_character.name = request.POST.get('name')
+            current_character.desc = request.POST.get('desc')
+            current_character.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
+    form_1 = name_desc_form(instance=current_character)        
     portrait_form = Image_Upload_Form(instance=current_character)
     
     cont = {
         'username' : request.user.username,
         'avatar' : path_string,
         'chr_portrait': path_string_chr, 
+        'form_1':form_1,
         'portrait_form' : portrait_form,
         'current_character': current_character,
     }

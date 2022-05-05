@@ -1,4 +1,4 @@
-$(".little_form>input").on("click",
+$("#id_portrait").change(
     function(){
         $(".little_button").css("display","block");
     }

@@ -3,7 +3,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'main/css/list.css' %}">
 <link rel="stylesheet" href="{% static 'main/css/lk.css' %}">
-<!-- <link rel="stylesheet" href="{% static 'main/css/login.css' %}"> -->
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous">
     </script>
@@ -28,24 +27,35 @@
 <div id="popup" class="popup">
     <div class="popup_body">
         <div class="popup_content">
-            <a href="#the_header" class="popup_close">=X=</a>
+            <a href="#the_header" class="popup_close">X</a>
             <h3 class="popup_title">Выберите портрет песонажа</h3>
             <br>
             <form method="post" class="little_form" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{portrait_form}}
                 <br>
-                <button type="submit" class="little_button">=V=</button>
+                <button type="submit" class="little_button" name = "ava_form">Сменить</button>
             </form>
         </div>
     </div>
 </div>
 
-<a href="#popup">
-    <div class="char_logo">
-        <img src="{{chr_portrait}}" alt="+">
+<div class="main_grid">
+    <div class="inform_box">
+        <a href="#popup">
+            <div class="char_logo">
+                <img src="{{chr_portrait}}" alt="+">
+            </div>
+        </a>
+
+        <form action="" method="post" id="form_1">
+            {% csrf_token %}
+            {{form_1}}
+        </form>
     </div>
-</a>
+</div>
+
+
 
 <script type="text/javascript" src="{% static 'main/js/list.js' %}"></script>
 <script type="text/javascript" src="{% static 'main/js/lk.js' %}"></script>

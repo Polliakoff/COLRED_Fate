@@ -34,7 +34,7 @@
             {% csrf_token %}
             {{form}}
             <br>
-            <button class="passw_button" type="submit">
+            <button class="passw_button" type="submit" name = "passw_form">
                 Сменить пароль
             </button>
         </form>
@@ -53,7 +53,7 @@
                 {% csrf_token %}
                 {{portrait_form}}
                 <br>
-                <button type="submit" class="little_button">=V=</button>
+                <button type="submit" class="little_button" name = "ava_form">Сменить</button>
             </form>
         </div>
     </div>

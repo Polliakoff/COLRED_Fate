@@ -1,5 +1,7 @@
+from pyexpat import model
+from tkinter.ttk import Widget
 from django.contrib.auth.forms import PasswordChangeForm
-from django.forms import ModelForm
+from django.forms import ModelForm, Textarea, Select
 from .models import Character
 from .models import Avatar_of_choice
 from django.forms import NumberInput, TextInput
@@ -10,6 +12,25 @@ class psw_ch(PasswordChangeForm):
         super(psw_ch, self).__init__(*args, **kwargs)
         for fieldname in ['old_password', 'new_password1', 'new_password2']:
             self.fields[fieldname].help_text = None
+
+class name_desc_form(ModelForm):
+    class Meta:
+        model = Character
+        fields = [
+            'name',
+            'desc',
+        ]
+
+        widgets = {
+            'name': TextInput(attrs={
+                'placeholder' : '________',
+                'id' : 'name_field',
+            }),
+
+            'desc': Textarea(attrs={
+                'id' : 'desc_field',
+            }),
+        }
 
 # class Great_List_Form(ModelForm):
 #     class Meta:
