@@ -37,6 +37,7 @@ def docs(request):
 @login_required
 def search(request):
     av = request.user.chosen_avatar
+    chrctrs = request.user.character_set.all()
     if av.custom_avatar:
         path_string = '/media/' + str(av.portrait)
     else:
@@ -44,6 +45,7 @@ def search(request):
     cont = {
         'username' : request.user.username,
         'avatar' : path_string,
+        'characters': chrctrs,
     }
     return render(request, 'main/search.html', cont)
 
@@ -103,6 +105,7 @@ def lk(response):
 @login_required
 def redactor(request,usr_id,chr_id):
     av = request.user.chosen_avatar
+    chrctrs = request.user.character_set.all()
     if av.custom_avatar:
         path_string = '/media/' + str(av.portrait)
     else:
@@ -143,6 +146,7 @@ def redactor(request,usr_id,chr_id):
         'form_1':form_1,
         'portrait_form' : portrait_form,
         'current_character': current_character,
+        'characters': chrctrs,
     }
     return render(request, 'main/list.html', cont)
 

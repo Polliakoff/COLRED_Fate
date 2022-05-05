@@ -41,14 +41,37 @@
 </div>
 
 <div class="main_grid">
+    <div class="profiles">
+        {% for chr in characters %}
+        <a href="/redactor/{{chr.usr.id}}/{{chr.id}}">
+            <div class="listing">
+                <div class="char_logo">
+                    {% if chr.custom_avatar %}
+                        <img src='/media/{{chr.portrait}}' alt="+">
+                    {% else %}
+                        <img src='/static/main/images/avatars/blank.png' alt="+">
+                    {% endif %}
+                </div>
+                <div>{{chr.name}}</div>
+            </div>
+        </a>
+        {% endfor %}
+    
+        <a href="/create_new">
+            <div class="listing addnew">
+                <div>+</div>
+            </div>
+        </a>
+    </div>
     <div class="inform_box">
         <a href="#popup">
-            <div class="char_logo">
+            <div class="char_logo_list char_logo list_form">
                 <img src="{{chr_portrait}}" alt="+">
             </div>
         </a>
 
-        <form action="" method="post" id="form_1">
+        <form action="" method="post" id="form_1" class="list_form">
+            <h2>ID</h2>
             {% csrf_token %}
             {{form_1}}
         </form>

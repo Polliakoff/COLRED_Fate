@@ -22,13 +22,14 @@ class name_desc_form(ModelForm):
         ]
 
         widgets = {
-            'name': TextInput(attrs={
-                'placeholder' : '________',
+            'name': Textarea(attrs={
                 'id' : 'name_field',
+                'class' : 'line_area',
             }),
 
             'desc': Textarea(attrs={
                 'id' : 'desc_field',
+                'class' : 'big_area',
             }),
         }
 

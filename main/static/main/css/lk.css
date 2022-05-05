@@ -130,10 +130,10 @@ main{
     margin: 10px 50px;
 }
 
-.profiles .listing{
+/* .profiles .listing{
     margin: 0 !important;
     background-color: #f9f9f9;
-}
+} */
 
 .profiles .listing:hover{
     margin: 0 !important;
