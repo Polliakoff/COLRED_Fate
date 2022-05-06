@@ -16,6 +16,18 @@ $('#desc_field').change(function(){
     $('#form_1').submit();
 });
 
+$( document ).ready(function() {
+    current_guy = $(".inform_box").attr("current_guy");
+
+    $( ".profiles .listing" ).each(function() {
+        id = $( this ).attr("guys_id")
+        if(current_guy == id) {
+            $( this ).css("background-color","#dfc35f");
+            $( this ).css("border-radius","20px");
+        } 
+    });
+})
+
 // function welp(t){
 //     switch (t) {
 //         case "1":

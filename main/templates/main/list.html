@@ -44,7 +44,7 @@
     <div class="profiles">
         {% for chr in characters %}
         <a href="/redactor/{{chr.usr.id}}/{{chr.id}}">
-            <div class="listing">
+            <div class="listing" guys_id = "{{chr.id}}">
                 <div class="char_logo">
                     {% if chr.custom_avatar %}
                         <img src='/media/{{chr.portrait}}' alt="+">
@@ -63,7 +63,7 @@
             </div>
         </a>
     </div>
-    <div class="inform_box">
+    <div class="inform_box" current_guy = "{{current_character.id}}">
         <a href="#popup">
             <div class="char_logo_list char_logo list_form">
                 <img src="{{chr_portrait}}" alt="+">
