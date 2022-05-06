@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import Image_Upload_Form, Image_Upload_Form_ava_edition, psw_ch
 from .forms import Image_Upload_Form, name_desc_form, main_aspects_form, fate_points_form
 from django.contrib.auth import update_session_auth_hash
-from .models import Character, Avatar_of_choice, aspect, stunt, extra, consequence, stress
+from .models import Character, Avatar_of_choice, aspect, stunt, extra, consequence, stress, skill
 
 @login_required
 def main(request):
@@ -117,6 +117,7 @@ def redactor(request,usr_id,chr_id):
     extras = current_character.character_extras.all()
     consequences = current_character.character_consequences.all()
     stress_es = current_character.character_stress.all()
+    skills = current_character.character_skills.all()
     
     if current_character.custom_avatar:
         path_string_chr = '/media/' + str(current_character.portrait)
@@ -246,6 +247,23 @@ def redactor(request,usr_id,chr_id):
                 upd.save()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
+        if 'add_new_skill' in request.POST:
+            new_skill = skill(chr = current_character)
+            new_skill.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'delete_skill_form' in request.POST:
+            skill.objects.filter(id = request.POST.get('skill_to_delete_ident_input')).delete()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'update_skill_form' in request.POST:
+            to_be_updated = skill.objects.filter(id = request.POST.get('skill_to_update_ident_input'))
+            for upd in to_be_updated:
+                upd.name = request.POST.get('skill_to_update_text_input')
+                upd.level = request.POST.get('skill_to_update_level_number_input')
+                upd.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
     form_1 = name_desc_form(instance=current_character)    
     main_aspects = main_aspects_form(instance=current_character)     
     sent_image_form = Image_Upload_Form(instance=current_character)
@@ -261,6 +279,7 @@ def redactor(request,usr_id,chr_id):
         'consequences' : consequences,  
         'extras' : extras,
         'stress' : stress_es,
+        'skills' : skills,
         'main_aspects': main_aspects,
         'fate_points': fate_points,
         'portrait_form' : sent_image_form,

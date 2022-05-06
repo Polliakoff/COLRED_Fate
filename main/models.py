@@ -19,8 +19,8 @@ class Character(models.Model):
     usr = models.ForeignKey(User, on_delete=models.CASCADE)
     high_concept = models.CharField(max_length=1000, default="", blank = True)
     trouble = models.CharField(max_length=1000, default="", blank = True)
-    max_skill = models.IntegerField(default=5, blank = True)
-    min_skill = models.IntegerField(default=1, blank = True)
+    # max_skill = models.IntegerField(default=5, blank = True)
+    # min_skill = models.IntegerField(default=1, blank = True)
     fate_point_number = models.IntegerField(default=3, blank = True)
     fate_point_refresh = models.IntegerField(default=3, blank = True)
     def __str__(self):
@@ -34,7 +34,7 @@ class aspect(models.Model):
         return self.desc
 
 class skill(models.Model):
-    name = models.CharField(max_length=100,default = "")
+    name = models.CharField(max_length=100,default = "Неуказанное умение")
     level = models.IntegerField(default = 0, blank=True)
     chr = models.ForeignKey('Character', on_delete=models.CASCADE,related_name='character_skills')
     def __str__(self):

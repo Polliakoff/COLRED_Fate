@@ -220,6 +220,54 @@ $('.stress_line').change(function(){
     add_id_update_stress();
     $('#update_stress_form').submit();
 })
+
+//===============================================skill
+function add_id_delete_skill(eventObj) {
+    $("<input />").attr("type", "hidden")
+        .attr("name", "delete_skill_form")
+        .appendTo("#delete_skill_form");
+    return true;
+}
+
+$('.skill_delete_button').click(function(){
+    sentenced_id = $(this).attr("skill_in_question");
+    $("#skill_to_delete_ident_input").val(sentenced_id);
+    add_id_delete_skill();
+    $("#delete_skill_form").submit();
+});
+
+function add_id_update_skill(eventObj) {
+    $("<input />").attr("type", "hidden")
+        .attr("name", "update_skill_form")
+        .appendTo("#update_skill_form");
+    return true;
+}
+
+$('.skill_line').change(function(){
+    update_id = $(this).attr("skill_in_question");
+    $("#skill_to_update_ident_input").val(update_id);
+    
+    $( ".skill_name_input" ).each(function() {
+        check_id = $(this).attr("skill_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#skill_to_update_text_input").val(new_text);
+        }
+    })
+    
+    $( ".skill_level_input" ).each(function() {
+        check_id = $(this).attr("skill_in_question");
+        if(check_id == update_id){
+            new_number = $(this).val();
+            $("#skill_to_update_level_number_input").val(new_number);
+        }
+    })
+
+    add_id_update_skill();
+    $('#update_skill_form').submit();
+})
+
+
 //===============================================consequences
 $('.consequence_drop_down_choice').change(function(){
     drop = $(this).is(":checked")

@@ -218,3 +218,64 @@ main{
     margin: 5px;
     width: 100px;
 }
+
+.skill_line{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.skill_column{
+    padding: 3px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.skill_column>input{
+    background-color: #f9f9f9;
+    box-shadow: 0px 6px 6px 1px #1c1e2038;
+    border-radius: 10px;
+    margin: 5px;
+    width: 100px;
+}
+
+@media screen and (max-width: 420px) {
+    main>*{
+        margin-right: 1px !important;
+        margin-left: 1px !important;
+        padding-right: 1px !important;
+        padding-left: 1px !important;
+    }
+
+    .skill_column{
+        margin-right: 1px !important;
+        margin-left: 1px !important;
+        padding-right: 1px !important;
+        padding-left: 1px !important;
+    }
+    .stress_column{
+        margin-right: 1px !important;
+        margin-left: 1px !important;
+        padding-right: 1px !important;
+        padding-left: 1px !important;
+    }
+
+    .skill_column>.little_area{
+        margin-right: 1px !important;
+        margin-left: 1px !important;
+        padding-right: 1px !important;
+        padding-left: 1px !important;
+    }
+    .stress_column>.little_area{
+        margin-right: 1px !important;
+        margin-left: 1px !important;
+        padding-right: 1px !important;
+        padding-left: 1px !important;
+    }
+}

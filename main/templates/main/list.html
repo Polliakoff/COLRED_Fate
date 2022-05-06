@@ -191,6 +191,26 @@
 
             <button class="little_button" id = "stress_add_button" name="add_new_stress">Добавить стресс</button>
         </form>
+
+        <form action="" method="post" id="skill" class="list_form">
+            <h2>Умения (Skills)</h2>
+            {% csrf_token %}
+            {% for skl in skills %}
+                    <div class="skill_line" skill_in_question = "{{skl.id}}">
+                        <div class="skill_column">
+                            <div>Name:</div>
+                            <textarea class="little_area skill_name_input" skill_in_question = "{{skl.id}}">{{skl}}</textarea>
+                        </div>
+                        <div class="skill_column">
+                            <div>Level (+):</div>
+                            <input type="number" name="skill_level_input" class = "skill_level_input" id="skill_level_input" value="{{skl.level}}" skill_in_question = "{{skl.id}}">
+                        </div>
+                        <a class="little_button skill_delete_button" skill_in_question = "{{skl.id}}">X</a>
+                    </div>
+            {% endfor %}
+
+            <button class="little_button" id = "skill_add_button" name="add_new_skill">Добавить умение</button>
+        </form>
             
         <!-- Невидимые технические формы и инпуты ================================================================================ -->
         <form action="" method="post" id="delete_aspect_form" class="technical_object">
@@ -263,6 +283,17 @@
         </form>
 
 
+        <form action="" method="post" id="delete_skill_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="skill_to_delete_ident_input" id="skill_to_delete_ident_input">
+        </form>
+
+        <form action="" method="post" id="update_skill_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="skill_to_update_ident_input" id="skill_to_update_ident_input">
+            <input type="text" name="skill_to_update_text_input" id="skill_to_update_text_input">
+            <input type="number" name="skill_to_update_level_number_input" id="skill_to_update_level_number_input">
+        </form>
     </div>
 </div>
 
