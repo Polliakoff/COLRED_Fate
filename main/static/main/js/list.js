@@ -98,15 +98,15 @@ $('.stunt_drop_down_choice').change(function(){
     drop = $(this).is(":checked")
     need_id = $(this).attr("stunt_in_question")
     if(drop){
-        $('.stunt_desc_input').each(function(){
+        $('.stunt_to_hide').each(function(){
             check_id = $(this).attr("stunt_in_question")
             if(check_id == need_id){
-                $(this).css('display','unset')
+                $(this).css('display','flex')
             }
         })
     }
     else{
-        $('.stunt_desc_input').each(function(){
+        $('.stunt_to_hide').each(function(){
             check_id = $(this).attr("stunt_in_question")
             if(check_id == need_id){
                 $(this).css('display','none')
@@ -151,8 +151,8 @@ $('.stunt_div').change(function(){
     $( ".stunt_desc_input" ).each(function() {
         check_id = $(this).attr("stunt_in_question");
         if(check_id == update_id){
-            new_desc_text = $(this).val();
-            $("#stunt_to_update_desc_text_input").val(new_desc_text);
+            new_text = $(this).val();
+            $("#stunt_to_update_desc_text_input").val(new_text);
         }
     })
 
@@ -160,23 +160,104 @@ $('.stunt_div').change(function(){
     $('#update_stunt_form').submit();
 })
 
-// $('.stunt_name_input').change(function(){
-//     new_text = $(this).val();
-//     update_id = $(this).attr("stunt_in_question");
-//     $("#stunt_to_update_ident_input").val(update_id);
-//     $("#stunt_to_update_text_input").val(new_text);
-//     add_id_update_stunt();
-//     $('#update_stunt_form').submit();
-// });
+//===============================================EXTRAS
+$('.extra_drop_down_choice').change(function(){
+    drop = $(this).is(":checked")
+    need_id = $(this).attr("extra_in_question")
+    if(drop){
+        $('.extra_to_hide').each(function(){
+            check_id = $(this).attr("extra_in_question")
+            if(check_id == need_id){
+                $(this).css('display','flex')
+            }
+        })
+    }
+    else{
+        $('.extra_to_hide').each(function(){
+            check_id = $(this).attr("extra_in_question")
+            if(check_id == need_id){
+                $(this).css('display','none')
+            }
+        })
+    }
+})
 
-// $('.stunt_desc_input').change(function(){
-//     new_desc_text = $(this).val();
-//     update_id = $(this).attr("stunt_in_question");
-//     $("#stunt_to_update_ident_input").val(update_id);
-//     $("#stunt_to_update_desc_text_input").val(new_desc_text);
-//     add_id_update_stunt();
-//     $('#update_stunt_form').submit();
-// });
+function add_id_delete_extra(eventObj) {
+    $("<input />").attr("type", "hidden")
+        .attr("name", "delete_extra_form")
+        .appendTo("#delete_extra_form");
+    return true;
+}
+
+$('.extra_delete_button').click(function(){
+    sentenced_id = $(this).attr("extra_in_question");
+    $("#extra_to_delete_ident_input").val(sentenced_id);
+    add_id_delete_extra();
+    $("#delete_extra_form").submit();
+});
+
+function add_id_update_extra(eventObj) {
+    $("<input />").attr("type", "hidden")
+        .attr("name", "update_extra_form")
+        .appendTo("#update_extra_form");
+    return true;
+}
+
+$('.extra_div').change(function(){
+    update_id = $(this).attr("extra_in_question");
+    $("#extra_to_update_ident_input").val(update_id);
+    
+    $( ".extra_name_input" ).each(function() {
+        check_id = $(this).attr("extra_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#extra_to_update_text_input").val(new_text);
+        }
+    })
+    
+    $( ".extra_cost_input" ).each(function() {
+        check_id = $(this).attr("extra_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#extra_to_update_cost_text_input").val(new_text);
+        }
+    })
+
+    $( ".extra_attached_aspects_input" ).each(function() {
+        check_id = $(this).attr("extra_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#extra_to_update_attached_aspects_text_input").val(new_text);
+        }
+    })
+
+    $( ".extra_attached_stunts_input" ).each(function() {
+        check_id = $(this).attr("extra_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#extra_to_update_attached_stunts_text_input").val(new_text);
+        }
+    })
+
+    $( ".extra_attached_skills_input" ).each(function() {
+        check_id = $(this).attr("extra_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#extra_to_update_attached_skills_text_input").val(new_text);
+        }
+    })
+
+    $( ".extra_details_input" ).each(function() {
+        check_id = $(this).attr("extra_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#extra_to_update_details_text_input").val(new_text);
+        }
+    })
+
+    add_id_update_extra();
+    $('#update_extra_form').submit();
+})
 
 
 //===============================================CHOSEN_GUY

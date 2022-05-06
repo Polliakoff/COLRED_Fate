@@ -48,7 +48,7 @@ class stunt(models.Model):
         return self.name
 
 class extra(models.Model):
-    name = models.CharField(max_length=100, default = "")
+    name = models.CharField(max_length=100, default = "Пустое дополнение")
     cost = models.CharField(max_length=100, default = "", blank=True)
     attached_aspects = models.CharField(max_length=10000, default = "", blank=True)
     attached_stunts = models.CharField(max_length=10000, default = "", blank=True)

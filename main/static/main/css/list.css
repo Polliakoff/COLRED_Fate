@@ -122,6 +122,36 @@ main{
     flex-wrap: nowrap;
 }
 
-.stunt_desc_input{
+.stunt_to_hide{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    display: none;
+}
+
+.extra_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.extra_upper_div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.extra_to_hide{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     display: none;
 }

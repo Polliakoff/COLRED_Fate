@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import Image_Upload_Form, Image_Upload_Form_ava_edition, psw_ch
 from .forms import Image_Upload_Form, name_desc_form, main_aspects_form, fate_points_form
 from django.contrib.auth import update_session_auth_hash
-from .models import Character, Avatar_of_choice, aspect, stunt
+from .models import Character, Avatar_of_choice, aspect, stunt, extra
 
 @login_required
 def main(request):
@@ -114,6 +114,7 @@ def redactor(request,usr_id,chr_id):
     current_character = Character.objects.get(id = chr_id)
     aspects = current_character.character_aspects.all()
     stunts = current_character.character_stunts.all()
+    extras = current_character.character_extras.all()
     
     if current_character.custom_avatar:
         path_string_chr = '/media/' + str(current_character.portrait)
@@ -175,16 +176,35 @@ def redactor(request,usr_id,chr_id):
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
         if 'delete_stunt_form' in request.POST:
-            print('DELETE FORM IDENTIFIED====================================================')
             stunt.objects.filter(id = request.POST.get('stunt_to_delete_ident_input')).delete()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
         if 'update_stunt_form' in request.POST:
-            print('UPDATE FORM IDENTIFIED====================================================')
             to_be_updated = stunt.objects.filter(id = request.POST.get('stunt_to_update_ident_input'))
             for upd in to_be_updated:
                 upd.name = request.POST.get('stunt_to_update_text_input')
                 upd.desc = request.POST.get('stunt_to_update_desc_text_input')
+                upd.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'add_new_extra' in request.POST:
+            new_extra = extra(chr = current_character)
+            new_extra.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'delete_extra_form' in request.POST:
+            extra.objects.filter(id = request.POST.get('extra_to_delete_ident_input')).delete()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'update_extra_form' in request.POST:
+            to_be_updated = extra.objects.filter(id = request.POST.get('extra_to_update_ident_input'))
+            for upd in to_be_updated:
+                upd.name = request.POST.get('extra_to_update_text_input')
+                upd.cost = request.POST.get('extra_to_update_cost_text_input')
+                upd.attached_aspects = request.POST.get('extra_to_update_attached_aspects_text_input')
+                upd.attached_stunts= request.POST.get('extra_to_update_attached_stunts_text_input')
+                upd.attached_skills = request.POST.get('extra_to_update_attached_skills_text_input')
+                upd.details = request.POST.get('extra_to_update_details_text_input')
                 upd.save()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
@@ -202,6 +222,7 @@ def redactor(request,usr_id,chr_id):
         'form_1': form_1,
         'aspects' : aspects,
         'stunts' : stunts,  
+        'extras' : extras,
         'main_aspects': main_aspects,
         'fate_points': fate_points,
         'portrait_form' : sent_image_form,

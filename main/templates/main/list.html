@@ -106,14 +106,47 @@
              <div class="stunt_upper_div" stunt_in_question = "{{stn.id}}">
                 <input type="checkbox" class="stunt_drop_down_choice" stunt_in_question = "{{stn.id}}">
                 <div class="stunt_div" stunt_in_question = "{{stn.id}}">
+                    <div>Name:</div>
                     <textarea class="line_area stunt_name_input" stunt_in_question = "{{stn.id}}">{{stn}}</textarea>
-                    <textarea class="big_area stunt_desc_input" stunt_in_question = "{{stn.id}}">{{stn.desc}}</textarea>
+                    <div class="stunt_to_hide" stunt_in_question = "{{stn.id}}">
+                        <div>Description:</div>
+                        <textarea class="med_area stunt_desc_input" stunt_in_question = "{{stn.id}}">{{stn.desc}}</textarea>
+                    </div>
                  </div>
                  <a class="little_button stunt_delete_button" stunt_in_question = "{{stn.id}}">X</a>
              </div>
             {% endfor %}
 
             <button class="little_button" id = "stunt_add_button" name="add_new_stunt">Добавить трюк</button>
+        </form>
+
+        <form action="" method="post" id="extras" class="list_form">
+            <h2>Дополнения</h2>
+            {% csrf_token %}
+            {% for ext in extras %}
+             <div class="extra_upper_div" extra_in_question = "{{ext.id}}">
+                <input type="checkbox" class="extra_drop_down_choice" extra_in_question = "{{ext.id}}">
+                <div class="extra_div" extra_in_question = "{{ext.id}}">
+                    <div>Name:</div>
+                    <textarea class="line_area extra_name_input" extra_in_question = "{{ext.id}}">{{ext}}</textarea>
+                    <div class="extra_to_hide" extra_in_question = "{{ext.id}}">
+                        <div>Cost:</div>
+                        <textarea class="line_area extra_cost_input" extra_in_question = "{{ext.id}}">{{ext.cost}}</textarea>
+                        <div>Attached aspects:</div>
+                        <textarea class="med_area extra_attached_aspects_input" extra_in_question = "{{ext.id}}">{{ext.attached_aspects}}</textarea>
+                        <div>Attached stunts:</div>
+                        <textarea class="med_area extra_attached_stunts_input" extra_in_question = "{{ext.id}}">{{ext.attached_stunts}}</textarea>
+                        <div>Attached skills:</div>
+                        <textarea class="med_area extra_attached_skills_input" extra_in_question = "{{ext.id}}">{{ext.attached_skills}}</textarea>
+                        <div>Details:</div>
+                        <textarea class="med_area extra_details_input" extra_in_question = "{{ext.id}}">{{ext.details}}</textarea>
+                    </div>
+                 </div>
+                 <a class="little_button extra_delete_button" extra_in_question = "{{ext.id}}">X</a>
+             </div>
+            {% endfor %}
+
+            <button class="little_button" id = "extra_add_button" name="add_new_extra">Добавить дополнение</button>
         </form>
 
             
@@ -129,6 +162,7 @@
             <input type="text" name="to_update_text_input" id="to_update_text_input">
         </form>
 
+
         <form action="" method="post" id="delete_stunt_form" class="technical_object">
             {% csrf_token %}
             <input type="number" name="stunt_to_delete_ident_input" id="stunt_to_delete_ident_input">
@@ -140,6 +174,24 @@
             <input type="text" name="stunt_to_update_text_input" id="stunt_to_update_text_input">
             <input type="text" name="stunt_to_update_desc_text_input" id="stunt_to_update_desc_text_input">
         </form>
+
+
+        <form action="" method="post" id="delete_extra_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="extra_to_delete_ident_input" id="extra_to_delete_ident_input">
+        </form>
+
+        <form action="" method="post" id="update_extra_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="extra_to_update_ident_input" id="extra_to_update_ident_input">
+            <input type="text" name="extra_to_update_text_input" id="extra_to_update_text_input">
+            <input type="text" name="extra_to_update_cost_text_input" id="extra_to_update_cost_text_input">
+            <input type="text" name="extra_to_update_attached_aspects_text_input" id="extra_to_update_attached_aspects_text_input">
+            <input type="text" name="extra_to_update_attached_stunts_text_input" id="extra_to_update_attached_stunts_text_input">
+            <input type="text" name="extra_to_update_attached_skills_text_input" id="extra_to_update_attached_skills_text_input">
+            <input type="text" name="extra_to_update_details_text_input" id="extra_to_update_details_text_input">
+        </form>
+
 
     </div>
 </div>
