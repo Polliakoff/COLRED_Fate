@@ -1,7 +1,7 @@
 from pyexpat import model
 from tkinter.ttk import Widget
 from django.contrib.auth.forms import PasswordChangeForm
-from django.forms import ModelForm, Textarea, Select
+from django.forms import ModelForm, Textarea, Select, Form
 from .models import Character
 from .models import Avatar_of_choice
 from django.forms import NumberInput, TextInput
@@ -32,6 +32,48 @@ class name_desc_form(ModelForm):
                 'class' : 'big_area',
             }),
         }
+
+
+class main_aspects_form(ModelForm):
+    class Meta:
+        model = Character
+        fields = [
+            'high_concept',
+            'trouble',
+        ]
+
+        widgets = {
+            'high_concept': Textarea(attrs={
+                'id' : 'high_concept_field',
+                'class' : 'line_area',
+            }),
+
+            'trouble': Textarea(attrs={
+                'id' : 'trouble_field',
+                'class' : 'line_area',
+            }),
+        }
+
+class fate_points_form(ModelForm):
+    class Meta:
+        model = Character
+        fields = [
+            'fate_point_number',
+            'fate_point_refresh',
+        ]
+
+        widgets = {
+            'fate_point_number': NumberInput(attrs={
+                'id' : 'fate_point_number_field',
+                'class' : 'number_input',
+            }),
+
+            'fate_point_refresh': NumberInput(attrs={
+                'id' : 'fate_point_refresh_field',
+                'class' : 'number_input',
+            }),
+        }
+
 
 # class Great_List_Form(ModelForm):
 #     class Meta:

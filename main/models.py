@@ -28,22 +28,22 @@ class Character(models.Model):
 
 
 class aspect(models.Model):
-    desc = models.CharField(max_length=1000)
-    chr = models.ForeignKey('Character', on_delete=models.CASCADE)
+    desc = models.CharField(max_length=1000,default = "Пустой аспект")
+    chr = models.ForeignKey('Character', on_delete=models.CASCADE,related_name='character_aspects')
     def __str__(self):
         return self.desc
 
 class skill(models.Model):
     name = models.CharField(max_length=100,default = "")
     level = models.IntegerField(default = 0, blank=True)
-    chr = models.ForeignKey('Character', on_delete=models.CASCADE)
+    chr = models.ForeignKey('Character', on_delete=models.CASCADE,related_name='character_skills')
     def __str__(self):
         return self.name
 
 class stunt(models.Model):
     name = models.CharField(max_length=100, default = "")
     desc = models.CharField(max_length=10000, default = "", blank=True)
-    chr = models.ForeignKey('Character', on_delete=models.CASCADE)
+    chr = models.ForeignKey('Character', on_delete=models.CASCADE,related_name='character_stunts')
     def __str__(self):
         return self.name
 
@@ -54,14 +54,14 @@ class extra(models.Model):
     attached_stunts = models.CharField(max_length=10000, default = "", blank=True)
     attached_skills = models.CharField(max_length=10000, default = "", blank=True)
     details = models.CharField(max_length=10000, default = "", blank=True)
-    chr = models.ForeignKey('Character', on_delete=models.CASCADE)
+    chr = models.ForeignKey('Character', on_delete=models.CASCADE,related_name='character_extras')
     def __str__(self):
         return self.name
 
 class consequence(models.Model):
     severity = models.CharField(max_length=100, default = "")
     desc = models.CharField(max_length=10000, default = "", blank=True)
-    chr = models.ForeignKey('Character', on_delete=models.CASCADE)
+    chr = models.ForeignKey('Character', on_delete=models.CASCADE,related_name='character_consequences')
     def __str__(self):
         return self.desc
 

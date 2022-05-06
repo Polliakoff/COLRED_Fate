@@ -156,6 +156,8 @@ main{
 } */
 
 .little_button{
+    color: #434343;
+    padding: 5px;
     display: none;
     background-color: #dfc35f;
     border-radius: 5px;
@@ -163,5 +165,6 @@ main{
 }
 
 .little_button:hover{
+    cursor: default;
     background: unset;
 }

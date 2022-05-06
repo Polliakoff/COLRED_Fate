@@ -69,12 +69,66 @@
                 <img src="{{chr_portrait}}" alt="+">
             </div>
         </a>
-
+        
         <form action="" method="post" id="form_1" class="list_form">
             <h2>ID</h2>
             {% csrf_token %}
             {{form_1}}
         </form>
+
+        <form action="" method="post" id="fate_points" class="list_form">
+            <h2>Фейт поинты</h2>
+            {% csrf_token %}
+            {{fate_points}}
+            <button class="little_button" id = "refresh_button">Возобновить</button>
+        </form>
+
+        <form action="" method="post" id="main_aspects" class="list_form">
+            <h2>Аспекты</h2>
+            {% csrf_token %}
+            {{main_aspects}}
+
+            <div>Other aspects:</div>
+            {% for asp in aspects %}
+             <div class="sec_asp_div">
+                <textarea class="line_area secondary_aspect_input" aspect_in_question = "{{asp.id}}">{{asp}}</textarea>
+                <a class="little_button secondary_aspect_delete_button" aspect_in_question = "{{asp.id}}">X</a>
+             </div>
+            {% endfor %}
+
+            <button class="little_button" id = "aspect_add_button" name="add_new_aspect">Добавить аспект</button>
+        </form>
+
+        <form action="" method="post" id="stunts" class="list_form">
+            <h2>Трюки</h2>
+            {% csrf_token %}
+            {% for stn in stunts %}
+             <div class="stunt_div" stunt_in_question = "{{stn.id}}">
+                 <div class="stunt_upper_div">
+                    <input type="checkbox" class="stunt_drop_down_choice" stunt_in_question = "{{stn.id}}">
+                    <textarea class="line_area stunt_name_input" stunt_in_question = "{{stn.id}}">{{stn}}</textarea>
+                    <a class="little_button stunt_delete_button" stunt_in_question = "{{stn.id}}">X</a>
+                 </div>
+                 <textarea class="big_area stunt_desc_input" stunt_in_question = "{{stn.id}}">{{stn.desc}}</textarea>
+             </div>
+            {% endfor %}
+
+            <button class="little_button" id = "stunt_add_button" name="add_new_stunt">Добавить трюк</button>
+        </form>
+
+            
+        <!-- Невидимые технические формы и инпуты ================================================================================ -->
+        <form action="" method="post" id="delete_aspect_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="to_delete_ident_input" id="to_delete_ident_input">
+        </form>
+
+        <form action="" method="post" id="update_aspect_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="to_update_ident_input" id="to_update_ident_input">
+            <input type="text" name="to_update_text_input" id="to_update_text_input">
+        </form>
+
     </div>
 </div>
 

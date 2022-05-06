@@ -200,7 +200,7 @@ header .lknick .nickname {
 
 .under_ava{
   height: 90%;
-  width: auto;
+  width: 90%;
   margin-top: 1px;
 }
 
@@ -343,6 +343,14 @@ main {
   margin: 10px;
 }
 
+@media screen and (max-width: 395px) {
+  .inform_box{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
 .profiles {
   display: flex; 
   flex-direction: column;

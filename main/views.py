@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import Image_Upload_Form, Image_Upload_Form_ava_edition, psw_ch
-from .forms import Image_Upload_Form, name_desc_form
+from .forms import Image_Upload_Form, name_desc_form, main_aspects_form, fate_points_form
 from django.contrib.auth import update_session_auth_hash
-from .models import Character, Avatar_of_choice
+from .models import Character, Avatar_of_choice, aspect
 
 @login_required
 def main(request):
@@ -110,7 +110,10 @@ def redactor(request,usr_id,chr_id):
         path_string = '/media/' + str(av.portrait)
     else:
         path_string = '/static/main/images/avatars/blank.png'
+    
     current_character = Character.objects.get(id = chr_id)
+    aspects = current_character.character_aspects.all()
+    stunts = current_character.character_stunts.all()
     
     if current_character.custom_avatar:
         path_string_chr = '/media/' + str(current_character.portrait)
@@ -123,28 +126,66 @@ def redactor(request,usr_id,chr_id):
     if request.method == 'POST':
         form_1 = name_desc_form(request.POST)
         sent_image_form = Image_Upload_Form(request.POST, request.FILES)
+        main_aspects = main_aspects_form(request.POST)
+        fate_points = fate_points_form(request.POST)
+
         if 'ava_form' in request.POST and sent_image_form.is_valid():
-            print('WE ARE HERE _1')
             current_character.portrait = request.FILES['portrait']
             current_character.custom_avatar = True
             current_character.save()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
         if 'form_1' in request.POST and form_1.is_valid():
-            print('WE ARE HERE')
             current_character.name = request.POST.get('name')
             current_character.desc = request.POST.get('desc')
             current_character.save()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+            
+        if 'main_aspects' in request.POST and main_aspects.is_valid():
+            current_character.high_concept = request.POST.get('high_concept')
+            current_character.trouble = request.POST.get('trouble')
+            current_character.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
-    form_1 = name_desc_form(instance=current_character)        
-    portrait_form = Image_Upload_Form(instance=current_character)
+        if 'fate_points' in request.POST and fate_points.is_valid():
+            current_character.fate_point_number = request.POST.get('fate_point_number')
+            current_character.fate_point_refresh = request.POST.get('fate_point_refresh')
+            current_character.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'add_new_aspect' in request.POST:
+            new_asp = aspect(chr = current_character)
+            new_asp.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'delete_aspect_form' in request.POST:
+            aspect.objects.filter(id = request.POST.get('to_delete_ident_input')).delete()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'update_aspect_form' in request.POST:
+            to_be_updated = aspect.objects.filter(id = request.POST.get('to_update_ident_input'))
+            for upd in to_be_updated:
+                upd.desc = request.POST.get('to_update_text_input')
+                upd.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+
+
+    form_1 = name_desc_form(instance=current_character)    
+    main_aspects = main_aspects_form(instance=current_character)     
+    sent_image_form = Image_Upload_Form(instance=current_character)
+    fate_points = fate_points_form(instance=current_character)
     
     cont = {
         'username' : request.user.username,
         'avatar' : path_string,
         'chr_portrait': path_string_chr, 
-        'form_1':form_1,
-        'portrait_form' : portrait_form,
+        'form_1': form_1,
+        'aspects' : aspects,
+        'stunts' : stunts,  
+        'main_aspects': main_aspects,
+        'fate_points': fate_points,
+        'portrait_form' : sent_image_form,
         'current_character': current_character,
         'characters': chrctrs,
     }

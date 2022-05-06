@@ -7,3 +7,7 @@
       justify-content: center;
     }
   }
+
+.inform_box{
+    max-width: calc(100% - 430px);
+}

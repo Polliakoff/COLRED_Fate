@@ -13,19 +13,46 @@ main{
     display: unset !important;
 }
 
+.number_input{
+    color: #434343;
+    box-shadow: 0px 6px 6px 1px #1c1e2038;
+    border-radius: 10px;
+    resize: none;
+    height: 50px;
+    width: auto;
+    background-color: #f9f9f9;
+}
+
 .line_area{
+    padding: 3px;
+    color: #434343;
+    margin: 10px;
     box-shadow: 0px 6px 6px 1px #1c1e2038;
     border-radius: 10px;
     resize: none;
     height: 50px;
     width: auto;
 }
-
-.big_area{
+.med_area{
+    padding: 3px;
+    color: #434343;
+    margin: 10px;
     box-shadow: 0px 6px 6px 1px #1c1e2038;
     border-radius: 10px;
     resize: none;
-    height: 300px;
+    height: 80px;
+    width: auto;
+}
+
+
+.big_area{
+    padding: 3px;
+    color: #434343;
+    margin: 10px;
+    box-shadow: 0px 6px 6px 1px #1c1e2038;
+    border-radius: 10px;
+    resize: none;
+    height: 150px;
     width: auto;
 }
 
@@ -49,4 +76,48 @@ main{
     .profiles{
         display: none;
     }
+    .inform_box{
+        max-width: 100% !important;
+    }
+}
+
+.inform_box{
+    max-width: calc(100% - 430px);
+}
+
+.list_form .little_button{
+    margin-top: 10px;
+    display: unset !important;
+}
+
+.sec_asp_div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.technical_object{
+    display: none;
+}
+
+.technical_object>*{
+    display: none;
+}
+
+.stunt_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.stunt_upper_div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
 }
