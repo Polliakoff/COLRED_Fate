@@ -160,6 +160,73 @@ $('.stunt_div').change(function(){
     $('#update_stunt_form').submit();
 })
 
+//===============================================consequences
+$('.consequence_drop_down_choice').change(function(){
+    drop = $(this).is(":checked")
+    need_id = $(this).attr("consequence_in_question")
+    if(drop){
+        $('.consequence_to_hide').each(function(){
+            check_id = $(this).attr("consequence_in_question")
+            if(check_id == need_id){
+                $(this).css('display','flex')
+            }
+        })
+    }
+    else{
+        $('.consequence_to_hide').each(function(){
+            check_id = $(this).attr("consequence_in_question")
+            if(check_id == need_id){
+                $(this).css('display','none')
+            }
+        })
+    }
+})
+
+function add_id_delete_consequence(eventObj) {
+    $("<input />").attr("type", "hidden")
+        .attr("name", "delete_consequence_form")
+        .appendTo("#delete_consequence_form");
+    return true;
+}
+
+$('.consequence_delete_button').click(function(){
+    sentenced_id = $(this).attr("consequence_in_question");
+    $("#consequence_to_delete_ident_input").val(sentenced_id);
+    add_id_delete_consequence();
+    $("#delete_consequence_form").submit();
+});
+
+function add_id_update_consequence(eventObj) {
+    $("<input />").attr("type", "hidden")
+        .attr("name", "update_consequence_form")
+        .appendTo("#update_consequence_form");
+    return true;
+}
+
+$('.consequence_div').change(function(){
+    update_id = $(this).attr("consequence_in_question");
+    $("#consequence_to_update_ident_input").val(update_id);
+    
+    $( ".consequence_severity_input" ).each(function() {
+        check_id = $(this).attr("consequence_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#consequence_to_update_text_input").val(new_text);
+        }
+    })
+    
+    $( ".consequence_desc_input" ).each(function() {
+        check_id = $(this).attr("consequence_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#consequence_to_update_desc_text_input").val(new_text);
+        }
+    })
+
+    add_id_update_consequence();
+    $('#update_consequence_form').submit();
+})
+
 //===============================================EXTRAS
 $('.extra_drop_down_choice').change(function(){
     drop = $(this).is(":checked")

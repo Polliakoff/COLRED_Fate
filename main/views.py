@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import Image_Upload_Form, Image_Upload_Form_ava_edition, psw_ch
 from .forms import Image_Upload_Form, name_desc_form, main_aspects_form, fate_points_form
 from django.contrib.auth import update_session_auth_hash
-from .models import Character, Avatar_of_choice, aspect, stunt, extra
+from .models import Character, Avatar_of_choice, aspect, stunt, extra, consequence
 
 @login_required
 def main(request):
@@ -115,6 +115,7 @@ def redactor(request,usr_id,chr_id):
     aspects = current_character.character_aspects.all()
     stunts = current_character.character_stunts.all()
     extras = current_character.character_extras.all()
+    consequences = current_character.character_consequences.all()
     
     if current_character.custom_avatar:
         path_string_chr = '/media/' + str(current_character.portrait)
@@ -208,6 +209,22 @@ def redactor(request,usr_id,chr_id):
                 upd.save()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
+        if 'add_new_consequence' in request.POST:
+            new_consequence = consequence(chr = current_character)
+            new_consequence.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'delete_consequence_form' in request.POST:
+            consequence.objects.filter(id = request.POST.get('consequence_to_delete_ident_input')).delete()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'update_consequence_form' in request.POST:
+            to_be_updated = consequence.objects.filter(id = request.POST.get('consequence_to_update_ident_input'))
+            for upd in to_be_updated:
+                upd.severity = request.POST.get('consequence_to_update_text_input')
+                upd.desc = request.POST.get('consequence_to_update_desc_text_input')
+                upd.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
 
     form_1 = name_desc_form(instance=current_character)    
@@ -221,7 +238,8 @@ def redactor(request,usr_id,chr_id):
         'chr_portrait': path_string_chr, 
         'form_1': form_1,
         'aspects' : aspects,
-        'stunts' : stunts,  
+        'stunts' : stunts, 
+        'consequences' : consequences,  
         'extras' : extras,
         'main_aspects': main_aspects,
         'fate_points': fate_points,

@@ -59,11 +59,11 @@ class extra(models.Model):
         return self.name
 
 class consequence(models.Model):
-    severity = models.CharField(max_length=100, default = "")
+    severity = models.CharField(max_length=100, default = "Неуточненная травма")
     desc = models.CharField(max_length=10000, default = "", blank=True)
     chr = models.ForeignKey('Character', on_delete=models.CASCADE,related_name='character_consequences')
     def __str__(self):
-        return self.desc
+        return self.severity
 
 
 # Create your models here.

@@ -149,6 +149,27 @@
             <button class="little_button" id = "extra_add_button" name="add_new_extra">Добавить дополнение</button>
         </form>
 
+        <form action="" method="post" id="consequences" class="list_form">
+            <h2>Травмы</h2>
+            {% csrf_token %}
+            {% for con in consequences %}
+             <div class="consequence_upper_div" consequence_in_question = "{{con.id}}">
+                <input type="checkbox" class="consequence_drop_down_choice" consequence_in_question = "{{con.id}}">
+                <div class="consequence_div" consequence_in_question = "{{con.id}}">
+                    <div>Severity:</div>
+                    <textarea class="line_area consequence_severity_input" consequence_in_question = "{{con.id}}">{{con}}</textarea>
+                    <div class="consequence_to_hide" consequence_in_question = "{{con.id}}">
+                        <div>Description:</div>
+                        <textarea class="med_area consequence_desc_input" consequence_in_question = "{{con.id}}">{{con.desc}}</textarea>
+                    </div>
+                 </div>
+                 <a class="little_button consequence_delete_button" consequence_in_question = "{{con.id}}">X</a>
+             </div>
+            {% endfor %}
+
+            <button class="little_button" id = "consequence_add_button" name="add_new_consequence">Добавить травму</button>
+        </form>
+
             
         <!-- Невидимые технические формы и инпуты ================================================================================ -->
         <form action="" method="post" id="delete_aspect_form" class="technical_object">
@@ -190,6 +211,19 @@
             <input type="text" name="extra_to_update_attached_stunts_text_input" id="extra_to_update_attached_stunts_text_input">
             <input type="text" name="extra_to_update_attached_skills_text_input" id="extra_to_update_attached_skills_text_input">
             <input type="text" name="extra_to_update_details_text_input" id="extra_to_update_details_text_input">
+        </form>
+
+
+        <form action="" method="post" id="delete_consequence_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="consequence_to_delete_ident_input" id="consequence_to_delete_ident_input">
+        </form>
+
+        <form action="" method="post" id="update_consequence_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="consequence_to_update_ident_input" id="consequence_to_update_ident_input">
+            <input type="text" name="consequence_to_update_text_input" id="consequence_to_update_text_input">
+            <input type="text" name="consequence_to_update_desc_text_input" id="consequence_to_update_desc_text_input">
         </form>
 
 
