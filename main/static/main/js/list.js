@@ -159,7 +159,67 @@ $('.stunt_div').change(function(){
     add_id_update_stunt();
     $('#update_stunt_form').submit();
 })
+//===============================================stress
+function add_id_delete_stress(eventObj) {
+    $("<input />").attr("type", "hidden")
+        .attr("name", "delete_stress_form")
+        .appendTo("#delete_stress_form");
+    return true;
+}
 
+$('.stress_delete_button').click(function(){
+    sentenced_id = $(this).attr("stress_in_question");
+    $("#stress_to_delete_ident_input").val(sentenced_id);
+    add_id_delete_stress();
+    $("#delete_stress_form").submit();
+});
+
+function add_id_update_stress(eventObj) {
+    $("<input />").attr("type", "hidden")
+        .attr("name", "update_stress_form")
+        .appendTo("#update_stress_form");
+    return true;
+}
+
+$('.stress_line').change(function(){
+    update_id = $(this).attr("stress_in_question");
+    $("#stress_to_update_ident_input").val(update_id);
+    
+    $( ".stress_type_input" ).each(function() {
+        check_id = $(this).attr("stress_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#stress_to_update_text_input").val(new_text);
+        }
+    })
+    
+    $( ".stress_level_input" ).each(function() {
+        check_id = $(this).attr("stress_in_question");
+        if(check_id == update_id){
+            new_number = $(this).val();
+            $("#stress_to_update_level_number_input").val(new_number);
+        }
+    })
+
+    $( ".stress_avaliable_input" ).each(function() {
+        check_id = $(this).attr("stress_in_question");
+        if(check_id == update_id){
+            new_number = $(this).val();
+            $("#stress_to_update_avaliable_number_input").val(new_number);
+        }
+    })
+
+    $( ".stress_spent_input" ).each(function() {
+        check_id = $(this).attr("stress_in_question");
+        if(check_id == update_id){
+            new_number = $(this).val();
+            $("#stress_to_update_spent_number_input").val(new_number);
+        }
+    })
+
+    add_id_update_stress();
+    $('#update_stress_form').submit();
+})
 //===============================================consequences
 $('.consequence_drop_down_choice').change(function(){
     drop = $(this).is(":checked")

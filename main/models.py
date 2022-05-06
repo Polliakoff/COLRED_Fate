@@ -65,5 +65,14 @@ class consequence(models.Model):
     def __str__(self):
         return self.severity
 
+class stress(models.Model):
+    type = models.CharField(max_length=100, default = "Физический")
+    level = models.IntegerField(default=1)
+    avaliable = models.IntegerField(default=3)
+    spent = models.IntegerField(default=0)
+    chr = models.ForeignKey('Character', on_delete=models.CASCADE,related_name='character_stress')
+    def __str__(self):
+        return self.type
+
 
 # Create your models here.

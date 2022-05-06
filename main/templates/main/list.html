@@ -170,6 +170,27 @@
             <button class="little_button" id = "consequence_add_button" name="add_new_consequence">Добавить травму</button>
         </form>
 
+        <form action="" method="post" id="stress" class="list_form">
+            <h2>Стресс (Stress)</h2>
+            {% csrf_token %}
+            {% for str in stress %}
+                    <div class="stress_line" stress_in_question = "{{str.id}}">
+                        <div class="stress_column">
+                            <div>Type:</div>
+                            <textarea class="little_area stress_type_input" stress_in_question = "{{str.id}}">{{str}}</textarea>
+                        </div>
+                        <div class="stress_column">
+                            <div>Level/Avaliable/Spent</div>
+                            <input type="number" name="stress_level_input" class = "stress_level_input" id="stress_level_input" value="{{str.level}}" stress_in_question = "{{str.id}}">
+                            <input type="number" name="stress_avaliable_input" class="stress_avaliable_input" id="stress_avaliable_input" value="{{str.avaliable}}" stress_in_question = "{{str.id}}">
+                            <input type="number" name="stress_spent_input" class="stress_spent_input" id="stress_spent_input" value="{{str.spent}}" stress_in_question = "{{str.id}}">
+                        </div>
+                        <a class="little_button stress_delete_button" stress_in_question = "{{str.id}}">X</a>
+                    </div>
+            {% endfor %}
+
+            <button class="little_button" id = "stress_add_button" name="add_new_stress">Добавить стресс</button>
+        </form>
             
         <!-- Невидимые технические формы и инпуты ================================================================================ -->
         <form action="" method="post" id="delete_aspect_form" class="technical_object">
@@ -224,6 +245,21 @@
             <input type="number" name="consequence_to_update_ident_input" id="consequence_to_update_ident_input">
             <input type="text" name="consequence_to_update_text_input" id="consequence_to_update_text_input">
             <input type="text" name="consequence_to_update_desc_text_input" id="consequence_to_update_desc_text_input">
+        </form>
+
+
+        <form action="" method="post" id="delete_stress_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="stress_to_delete_ident_input" id="stress_to_delete_ident_input">
+        </form>
+
+        <form action="" method="post" id="update_stress_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="stress_to_update_ident_input" id="stress_to_update_ident_input">
+            <input type="text" name="stress_to_update_text_input" id="stress_to_update_text_input">
+            <input type="number" name="stress_to_update_level_number_input" id="stress_to_update_level_number_input">
+            <input type="number" name="stress_to_update_avaliable_number_input" id="stress_to_update_avaliable_number_input">
+            <input type="number" name="stress_to_update_spent_number_input" id="stress_to_update_spent_number_input">
         </form>
 
 
