@@ -121,3 +121,7 @@ main{
     justify-content: space-between;
     flex-wrap: nowrap;
 }
+
+.stunt_desc_input{
+    display: none;
+}

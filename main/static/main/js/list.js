@@ -93,6 +93,92 @@ $('#refresh_button').click(function(){
     }
 });
 
+//===============================================STUNTS
+$('.stunt_drop_down_choice').change(function(){
+    drop = $(this).is(":checked")
+    need_id = $(this).attr("stunt_in_question")
+    if(drop){
+        $('.stunt_desc_input').each(function(){
+            check_id = $(this).attr("stunt_in_question")
+            if(check_id == need_id){
+                $(this).css('display','unset')
+            }
+        })
+    }
+    else{
+        $('.stunt_desc_input').each(function(){
+            check_id = $(this).attr("stunt_in_question")
+            if(check_id == need_id){
+                $(this).css('display','none')
+            }
+        })
+    }
+})
+
+function add_id_delete_stunt(eventObj) {
+    $("<input />").attr("type", "hidden")
+        .attr("name", "delete_stunt_form")
+        .appendTo("#delete_stunt_form");
+    return true;
+}
+
+$('.stunt_delete_button').click(function(){
+    sentenced_id = $(this).attr("stunt_in_question");
+    $("#stunt_to_delete_ident_input").val(sentenced_id);
+    add_id_delete_stunt();
+    $("#delete_stunt_form").submit();
+});
+
+function add_id_update_stunt(eventObj) {
+    $("<input />").attr("type", "hidden")
+        .attr("name", "update_stunt_form")
+        .appendTo("#update_stunt_form");
+    return true;
+}
+
+$('.stunt_div').change(function(){
+    update_id = $(this).attr("stunt_in_question");
+    $("#stunt_to_update_ident_input").val(update_id);
+    
+    $( ".stunt_name_input" ).each(function() {
+        check_id = $(this).attr("stunt_in_question");
+        if(check_id == update_id){
+            new_text = $(this).val();
+            $("#stunt_to_update_text_input").val(new_text);
+        }
+    })
+    
+    $( ".stunt_desc_input" ).each(function() {
+        check_id = $(this).attr("stunt_in_question");
+        if(check_id == update_id){
+            new_desc_text = $(this).val();
+            $("#stunt_to_update_desc_text_input").val(new_desc_text);
+        }
+    })
+
+    add_id_update_stunt();
+    $('#update_stunt_form').submit();
+})
+
+// $('.stunt_name_input').change(function(){
+//     new_text = $(this).val();
+//     update_id = $(this).attr("stunt_in_question");
+//     $("#stunt_to_update_ident_input").val(update_id);
+//     $("#stunt_to_update_text_input").val(new_text);
+//     add_id_update_stunt();
+//     $('#update_stunt_form').submit();
+// });
+
+// $('.stunt_desc_input').change(function(){
+//     new_desc_text = $(this).val();
+//     update_id = $(this).attr("stunt_in_question");
+//     $("#stunt_to_update_ident_input").val(update_id);
+//     $("#stunt_to_update_desc_text_input").val(new_desc_text);
+//     add_id_update_stunt();
+//     $('#update_stunt_form').submit();
+// });
+
+
 //===============================================CHOSEN_GUY
 $( document ).ready(function() {
     current_guy = $(".inform_box").attr("current_guy");
@@ -115,111 +201,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
 window.onbeforeunload = function(e) {
     localStorage.setItem('scrollpos', window.scrollY);
 };
-
-
-
-// function welp(t){
-//     switch (t) {
-//         case "1":
-//             return "-5";
-//             break;
-//         case "2":
-//         case "3":
-//             return "-4";
-//             break;
-//         case "4":
-//         case "5":
-//             return "-3";
-//             break;
-//         case "6":
-//         case "7":
-//             return "-2";
-//             break;
-//         case "8":
-//         case "9":
-//             return "-1";
-//             break;
-//         case "10":
-//         case "11":
-//             return "+0";
-//             break;
-//         case "12":
-//         case "13":
-//             return "+1";
-//             break;
-//         case "14":
-//         case "15":
-//             return "+2";
-//             break;
-//         case "16":
-//         case "17":
-//             return "+3";
-//             break;
-//         case "18":
-//         case "19":
-//             return "+4";
-//             break;
-//         case "20":
-//         case "21":
-//             return "+5";
-//             break;
-//         case "22":
-//         case "23":
-//             return "+6";
-//             break;
-//         case "24":
-//         case "25":
-//             return "+7";
-//             break;
-//     }
-// }
-
-
-// $(document).ready(function () {
-//     t = $("#DX").val()
-//     $(".DX").text(welp(t))
-
-//     t = $("#STR").val()
-//     $(".STR").text(welp(t))
-
-//     t = $("#CON").val()
-//     $(".CON").text(welp(t))
-
-//     t = $("#IN").val()
-//     $(".IN").text(welp(t))
-
-//     t = $("#WIS").val()
-//     $(".WIS").text(welp(t))
-
-//     t = $("#CHR").val()
-//     $(".CHR").text(welp(t))
-
-//     t = Math.floor($("#id_xp").val()/1000)
-//     $("#class_lvl").text(t)
-// });
-
-// $("input").change(function () {
-//     t = $("#DX").val()
-//     $(".DX").text(welp(t))
-
-//     t = $("#STR").val()
-//     $(".STR").text(welp(t))
-
-//     t = $("#CON").val()
-//     $(".CON").text(welp(t))
-
-//     t = $("#IN").val()
-//     $(".IN").text(welp(t))
-
-//     t = $("#WIS").val()
-//     $(".WIS").text(welp(t))
-
-//     t = $("#CHR").val()
-//     $(".CHR").text(welp(t))
-    
-//     t = Math.floor($("#id_xp").val()/1000)
-//     $("#class_lvl").text(t)
-// });
-
-
-

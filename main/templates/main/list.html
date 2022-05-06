@@ -103,13 +103,13 @@
             <h2>Трюки</h2>
             {% csrf_token %}
             {% for stn in stunts %}
-             <div class="stunt_div" stunt_in_question = "{{stn.id}}">
-                 <div class="stunt_upper_div">
-                    <input type="checkbox" class="stunt_drop_down_choice" stunt_in_question = "{{stn.id}}">
+             <div class="stunt_upper_div" stunt_in_question = "{{stn.id}}">
+                <input type="checkbox" class="stunt_drop_down_choice" stunt_in_question = "{{stn.id}}">
+                <div class="stunt_div" stunt_in_question = "{{stn.id}}">
                     <textarea class="line_area stunt_name_input" stunt_in_question = "{{stn.id}}">{{stn}}</textarea>
-                    <a class="little_button stunt_delete_button" stunt_in_question = "{{stn.id}}">X</a>
+                    <textarea class="big_area stunt_desc_input" stunt_in_question = "{{stn.id}}">{{stn.desc}}</textarea>
                  </div>
-                 <textarea class="big_area stunt_desc_input" stunt_in_question = "{{stn.id}}">{{stn.desc}}</textarea>
+                 <a class="little_button stunt_delete_button" stunt_in_question = "{{stn.id}}">X</a>
              </div>
             {% endfor %}
 
@@ -127,6 +127,18 @@
             {% csrf_token %}
             <input type="number" name="to_update_ident_input" id="to_update_ident_input">
             <input type="text" name="to_update_text_input" id="to_update_text_input">
+        </form>
+
+        <form action="" method="post" id="delete_stunt_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="stunt_to_delete_ident_input" id="stunt_to_delete_ident_input">
+        </form>
+
+        <form action="" method="post" id="update_stunt_form" class="technical_object">
+            {% csrf_token %}
+            <input type="number" name="stunt_to_update_ident_input" id="stunt_to_update_ident_input">
+            <input type="text" name="stunt_to_update_text_input" id="stunt_to_update_text_input">
+            <input type="text" name="stunt_to_update_desc_text_input" id="stunt_to_update_desc_text_input">
         </form>
 
     </div>

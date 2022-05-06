@@ -41,7 +41,7 @@ class skill(models.Model):
         return self.name
 
 class stunt(models.Model):
-    name = models.CharField(max_length=100, default = "")
+    name = models.CharField(max_length=100, default = "Пустой трюк")
     desc = models.CharField(max_length=10000, default = "", blank=True)
     chr = models.ForeignKey('Character', on_delete=models.CASCADE,related_name='character_stunts')
     def __str__(self):

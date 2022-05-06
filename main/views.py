@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import Image_Upload_Form, Image_Upload_Form_ava_edition, psw_ch
 from .forms import Image_Upload_Form, name_desc_form, main_aspects_form, fate_points_form
 from django.contrib.auth import update_session_auth_hash
-from .models import Character, Avatar_of_choice, aspect
+from .models import Character, Avatar_of_choice, aspect, stunt
 
 @login_required
 def main(request):
@@ -166,6 +166,25 @@ def redactor(request,usr_id,chr_id):
             to_be_updated = aspect.objects.filter(id = request.POST.get('to_update_ident_input'))
             for upd in to_be_updated:
                 upd.desc = request.POST.get('to_update_text_input')
+                upd.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+        
+        if 'add_new_stunt' in request.POST:
+            new_stunt = stunt(chr = current_character)
+            new_stunt.save()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'delete_stunt_form' in request.POST:
+            print('DELETE FORM IDENTIFIED====================================================')
+            stunt.objects.filter(id = request.POST.get('stunt_to_delete_ident_input')).delete()
+            return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'update_stunt_form' in request.POST:
+            print('UPDATE FORM IDENTIFIED====================================================')
+            to_be_updated = stunt.objects.filter(id = request.POST.get('stunt_to_update_ident_input'))
+            for upd in to_be_updated:
+                upd.name = request.POST.get('stunt_to_update_text_input')
+                upd.desc = request.POST.get('stunt_to_update_desc_text_input')
                 upd.save()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
 
