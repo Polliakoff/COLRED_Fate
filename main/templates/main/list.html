@@ -211,6 +211,12 @@
 
             <button class="little_button" id = "skill_add_button" name="add_new_skill">Добавить умение</button>
         </form>
+
+        <form action="" method="post" id="big_deletion" class="list_form">
+            <h2>УДАЛИТЬ ПЕРСОНАЖА</h2>
+            {% csrf_token %}
+            <button class="little_button" id = "delete_character_button" name="delete_character_button">===X===</button>
+        </form>
             
         <!-- Невидимые технические формы и инпуты ================================================================================ -->
         <form action="" method="post" id="delete_aspect_form" class="technical_object">

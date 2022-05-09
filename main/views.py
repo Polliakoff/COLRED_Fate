@@ -4,6 +4,7 @@ from .forms import Image_Upload_Form, Image_Upload_Form_ava_edition, psw_ch
 from .forms import Image_Upload_Form, name_desc_form, main_aspects_form, fate_points_form
 from django.contrib.auth import update_session_auth_hash
 from .models import Character, Avatar_of_choice, aspect, stunt, extra, consequence, stress, skill
+from django.contrib.auth.models import User
 
 @login_required
 def main(request):
@@ -263,6 +264,10 @@ def redactor(request,usr_id,chr_id):
                 upd.level = request.POST.get('skill_to_update_level_number_input')
                 upd.save()
             return redirect('/redactor/'+str(request.user.id)+'/'+str(current_character.id))
+
+        if 'delete_character_button' in request.POST:
+            Character.objects.filter(id = chr_id).delete()
+            return redirect('/characters')
 
     form_1 = name_desc_form(instance=current_character)    
     main_aspects = main_aspects_form(instance=current_character)     
