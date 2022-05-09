@@ -12,7 +12,35 @@ COLRED FATE
 
 
 {% block content %}
+{%load static%}
 <div class="main_grid">
-    <div class="inform_box">ГЛАВНАЯ СТРАНИЦА С КАПЕЦ КАКОЙ ВАЖНОЙ ИНФОЙ</div>
+    <div class="inform_box">
+        <div class="div_column outside_box">
+            <h1 style="color: #15598f;">Добро пожаловать!</h1>
+            <div class="div_line outside_box">
+                <div class="div_column">
+                    <div class="reg_text_box">
+                        Данный сайт является часть проекта COLRED и предназначен для создания и реадактирования персонажей в 
+                        рамках ролевой системы Fate Core разрабатываемой компанией Evil hat productions.
+                    </div>
+                    <div class="reg_text_box">
+                        Данный проект является
+                        некомерческим и "фанатским", не присваивает ничьи интеллектуальные права и не выдвигает на них претензий.
+                    </div>
+                    <div class="reg_text_box">
+                        <h4 style="color: #15598f;">Сайт предоставляет:</h4>
+                        <ul>
+                            <li>Возможность создания и редактирования персонажей по системе Fate Core в разделе "Персонажи"</li>
+                            <li>Поиск по библиотеке сохраненны персонажей в разделе "Поиск"</li>
+                            <li>Краткий сборник основных документов по системе Fate Core в разделе "Документы"</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="listing_picture">
+                    <img src="{% static 'main/images/Fate2-1100x1100.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

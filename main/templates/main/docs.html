@@ -15,7 +15,52 @@
 {% block ava_image %}{{ avatar }}{% endblock %}
 
 {% block content %}
+{%load static%}
 <div class="main_grid">
-    <div class="inform_box">КНИЖКИ ПО ФЕЙТУ</div>
+    <div class="inform_box">
+        <div class="div_column outside_box">
+            <h1 style="color: #15598f;">Документация</h1>
+            <div class="div_line outside_box">
+                <div class="div_column">
+                    <div class="reg_text_box">
+                        <h4 style="color: #15598f;">Краткий экскурс:</h4>
+                        Fate - это универсальная система ролевых игр, основанная на игровой системе Fudge. Он не имеет фиксированных настроек, характеристик 
+                        или жанра и настраивается. Он разработан таким образом, чтобы создать минимальные препятствия для ролевой игры, предполагая, 
+                        что игроки хотят сделать меньше бросков костей.
+                    </div>
+                    <div class="reg_text_box">
+                        Fate была написана Фредом Хиксом и Робом Донохью, издатаелем выступила студия Evil hat productions; 
+                        1-е издание было опубликовано в начале 2003 года, 
+                        а последняя версия (4-е издание) была успешно опубликована через краудсорсинг Kickstarter в 2013 году.
+                    </div>
+                    <div class="reg_text_box">
+                        На данный момент Fate выпускается в рамках нескольких изданий с разным объемом и сложностьи правил, также
+                        присутсвует ряд дополнительных ситуативных книг правил и готовых вселенных. Данный сайт работает с основным
+                        и самым популярным изданием - Fate Core
+                    </div>
+                    <div class="reg_text_box">
+                        <h4 style="color: #15598f;">Полезные ссылки:</h4>
+                        <ul>
+                            <li>
+                                <a class="listing_link" href="https://www.evilhat.com/home/fate-core/">Fate Core на официальном сайте Evil Hat</a>
+                            </li>
+                            <li>
+                                <a class="listing_link" href="https://en.wikipedia.org/wiki/Fate_(role-playing_game_system)">Страница Fate RP на википедии</a>
+                            </li>
+                            <li>
+                                <a class="listing_link" href="https://fate-srd.com/">Fate SRD - поддерживаемый официальными издателем онлайн сборник правил по игре</a>
+                            </li>
+                            <li>
+                                <a class="listing_link" href="https://edinorog.org/product/fate-core">Купить в РФ официальное печатное издание Fate Core</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="listing_picture">
+                    <img src="{% static 'main/images/fate_book.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

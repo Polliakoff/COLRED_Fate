@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'main/css/main_style.css' %}">
-    <link rel="icon" href="{% static 'main/images/favicon.ico' %}" type="image/x-icon">
-    <link rel="shortcut icon" href="{% static 'main/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'main/images/C_F_Symbol.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'main/images/C_F_Symbol.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'main/css/floating_search.css' %}">
     {% block head_input %}{% endblock %}
     {% block list %}{% endblock %}
@@ -22,14 +22,16 @@
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <div class="fotologo">
-            <img src="{% static 'main/images/logo.png' %}" alt="">
-        </div>
-
-        <div class="fotologo">
-            <img src="{% static 'main/images/fate_logo.png' %}" alt="">
-        </div>
-       
+        <a href="https://colred.polliakoff.repl.co/" class="fotolink">
+            <div class="fotologo">
+                <img src="{% static 'main/images/logo.png' %}" alt="">
+            </div>
+        </a>
+        <a href="https://www.evilhat.com/home/fate-core/" class="fotolink">
+            <div class="fotologo">
+                <img src="{% static 'main/images/fate_logo.png' %}" alt="">
+            </div>
+        </a>
         <div class="about">
             <p>Поляков Д.</p>
             <br>

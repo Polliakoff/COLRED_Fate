@@ -330,6 +330,7 @@ main {
 }
 
 .inform_box{
+  /* padding: 15px; */
   padding: 5px;
   color: #434343;
   box-shadow: 0px 6px 6px 1px #1c1e2038;
@@ -437,6 +438,11 @@ main {
   width: auto;
 }
 
+.fotolink{
+  height: 100%;
+  width: auto;
+}
+
 footer {
   /* background-color: black; */
   background: url(../images/70.png);
@@ -454,6 +460,11 @@ footer {
 footer>div{
   margin: 5px 5%;
 }
+
+footer>a{
+  margin: 5px 5%;
+}
+
 
 .about {
   text-align: left;
@@ -480,9 +491,65 @@ footer>div{
     display: none;
   }
 }
+.outside_box{
+  width: 100%;
+}
+.reg_text_box{
+  font-size: larger;
+  margin: 10px;
+  text-align: justify;
+  width: 600px;
+}
 
+.div_column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.div_line{
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
 
+.listing_picture{
+  margin: 10px;
+  height: 600px;
+  width: auto;
+}
+
+.listing_picture>img{
+  border-width: 3px;
+  border-color: #434343;
+  border-radius: 5px;
+  height: 100%;
+  width: auto;
+}
+
+.listing_link{
+  text-decoration-line: underline;
+  padding: 2px;
+  color: #434343;
+}
+
+.listing_link:hover{
+  background-color: #ffea9f;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 653px) {
+  .listing_picture>img{
+    width: 85vw;
+    height: auto;
+  }
+  .reg_text_box{
+    width: 85vw;
+  }
+}
 
 
 
