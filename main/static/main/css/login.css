@@ -17,6 +17,10 @@ header .coach{
 }
 
 main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 20px;
     margin-top: 150px;
     font-size: 14px;
@@ -25,7 +29,7 @@ main {
 .login_main {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
