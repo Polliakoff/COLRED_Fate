@@ -99,7 +99,7 @@
         </form>
 
         <form action="" method="post" id="stunts" class="list_form">
-            <h2>Трюки</h2>
+            <h2>Трюки (Stunts)</h2>
             {% csrf_token %}
             {% for stn in stunts %}
              <div class="stunt_upper_div" stunt_in_question = "{{stn.id}}">
@@ -120,7 +120,7 @@
         </form>
 
         <form action="" method="post" id="extras" class="list_form">
-            <h2>Дополнения</h2>
+            <h2>Дополнения (Extras)</h2>
             {% csrf_token %}
             {% for ext in extras %}
              <div class="extra_upper_div" extra_in_question = "{{ext.id}}">
@@ -149,7 +149,7 @@
         </form>
 
         <form action="" method="post" id="consequences" class="list_form">
-            <h2>Травмы</h2>
+            <h2>Травмы (Consequences)</h2>
             {% csrf_token %}
             {% for con in consequences %}
              <div class="consequence_upper_div" consequence_in_question = "{{con.id}}">
