@@ -1,15 +1,23 @@
 from pickle import TRUE
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_delete
+from django.dispatch.dispatcher import receiver
 
 class Avatar_of_choice(models.Model):
     custom_avatar = models.BooleanField(default=False)
-    # name = models.CharField('Название', max_length=50)
     portrait = models.ImageField(upload_to ='user_images/',null=True, blank=True)
     usr = models.OneToOneField(User,on_delete=models.CASCADE,default='1',primary_key=True,related_name='chosen_avatar')
 
     def __str__(self):
         return self.name
+
+@receiver(post_delete, sender = Avatar_of_choice)
+def usr_port_del(sender, instance, *args, **kwargs):
+    try:
+        instance.portrait.delete(save=False)
+    except:
+        pass
 
 class Character(models.Model):
     name = models.CharField(max_length=100)
@@ -19,13 +27,17 @@ class Character(models.Model):
     usr = models.ForeignKey(User, on_delete=models.CASCADE)
     high_concept = models.CharField(max_length=1000, default="", blank = True)
     trouble = models.CharField(max_length=1000, default="", blank = True)
-    # max_skill = models.IntegerField(default=5, blank = True)
-    # min_skill = models.IntegerField(default=1, blank = True)
     fate_point_number = models.IntegerField(default=3, blank = True)
     fate_point_refresh = models.IntegerField(default=3, blank = True)
     def __str__(self):
         return self.name
 
+@receiver(post_delete, sender = Character)
+def chr_port_del(sender, instance, *args, **kwargs):
+    try:
+        instance.portrait.delete(save=False)
+    except:
+        pass
 
 class aspect(models.Model):
     desc = models.CharField(max_length=1000,default = "Пустой аспект")
